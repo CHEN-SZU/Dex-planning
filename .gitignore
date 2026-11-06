@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+build/
+install/
+log/
+*.so
+*.so.*
+*.whl
+*.deb
+.env
+.env.*
+*.log
+.DS_Store

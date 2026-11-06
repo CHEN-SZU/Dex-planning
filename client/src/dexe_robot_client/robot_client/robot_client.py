@@ -1,0 +1,757 @@
+'''
+----------------------------------------------------------------------------
+Copyright (c) 2021-2026 DexForce Technology Co., Ltd.
+
+All rights reserved.
+----------------------------------------------------------------------------
+'''
+from abc import ABC, abstractmethod
+from .data_structure import *
+from ..common import get_logger
+
+
+class RobotClient(ABC):
+
+    def __init__(self, is_sim: bool = False):
+        self.logger = get_logger()
+        self.is_sim = is_sim
+
+        # robot info
+        self.status = None
+        self.robot_type = None
+        self.arm_type = None
+        self.robot_version = None
+
+        # status words/control words
+        self.robot_statusword = None
+        self.robot_controlword = None
+
+        # property
+        self.run_mode = None
+        self.safe_level = None
+        self.global_speed_ratio = None
+        self.joint_stiffness = None
+        self.joint_damping = None
+        self.cart_stiffness = None
+        self.cart_damping_ratio = None
+        self.cart_impedance_force = None
+
+        self.latest_sent_id = -1
+        self.latest_queued_id = -1
+        self.latest_finished_id = -1
+        self.latest_errordrop_id = -1
+
+        self.joint_position_cmd = list[float]()
+        self.joint_position = list[float]()
+        self.joint_velocity = list[float]()
+        self.joint_torque = list[float]()
+
+        self.motor_status = list[int]()
+        self.motor_error_code = list[int]()
+        self.motor_temperature = list[int]()
+        self.force_sensor = list[float]()
+
+        self.torque_limit_negative = list[float]()
+        self.torque_limit_positive = list[float]()
+
+        self.ee_pose = list[float]()
+        self.torso_pose_X_Z_RY = list[float]()
+
+        self._move_request_id_returned = False
+
+    """---------------------------------------------------------------------------
+    User interfaces - setting/getting parameters, mode or state
+    用户接口 - 设置/获取机器人参数, 模式或状态
+    ----------------------------------------------------------------------------"""
+
+    def get_info(self) -> RobotInfo:
+        """Get robot state information.
+        获取机器人状态信息
+        Returns:
+            RobotInfo: 机器人状态集合
+        """
+        return RobotInfo(
+            status=self.status,
+            robot_type=self.robot_type,
+            arm_type=self.arm_type,
+            robot_version=self.robot_version,
+            robot_statusword=self.robot_statusword,
+            robot_controlword=self.robot_controlword,
+            run_mode=self.run_mode,
+            safe_level=self.safe_level,
+            global_speed_ratio=self.global_speed_ratio,
+            joint_stiffness=self.joint_stiffness,
+            joint_damping=self.joint_damping,
+            cart_stiffness=self.cart_stiffness,
+            cart_damping_ratio=self.cart_damping_ratio,
+            cart_impedance_force=self.cart_impedance_force,
+            latest_sent_id=self.latest_sent_id,
+            latest_queued_id=self.latest_queued_id,
+            latest_finished_id=self.latest_finished_id,
+            latest_errordrop_id=self.latest_errordrop_id,
+            joint_position_cmd=self.joint_position_cmd,
+            joint_position=self.joint_position,
+            joint_velocity=self.joint_velocity,
+            joint_torque=self.joint_torque,
+            motor_status=self.motor_status,
+            motor_error_code=self.motor_error_code,
+            motor_temperature=self.motor_temperature,
+            force_sensor=self.force_sensor,
+            torque_limit_negative=self.torque_limit_negative,
+            torque_limit_positive=self.torque_limit_positive,
+            ee_pose=self.ee_pose,
+            torso_pose_X_Z_RY=self.torso_pose_X_Z_RY,
+        )
+
+    def get_robot_type(self) -> str:
+        """Get robot type string.
+        获取机器人型号字符串
+        Returns:
+            str: 机器人型号字符串
+        """
+        return self.robot_type
+
+    def get_arm_type(self) -> str:
+        """Get robot arm type string.
+        获取机器人臂型字符串
+        Returns:
+            str: 机器人臂型字符串
+        """
+        return self.arm_type
+
+    def get_robot_version(self) -> str:
+        """Get robot version string.
+        获取机器人版本字符串
+        Returns:
+            str: 机器人版本字符串
+        """
+        return self.robot_version
+
+    def set_tcp(
+        self,
+        tcp: Union[list[float], np.ndarray],
+        arm: MotionGroup = MotionGroup.Primary,
+    ) -> int:
+        """async interface - setting robot TCP
+        异步接口 - 设置机器人工具坐标系, 默认设置左臂tcp坐标系(机器人为双臂时), 单臂时即为机器人tcp坐标系
+        Args:
+        - tcp: 四元数形式位姿list[float]: [x, y, z, qw, qx, qy, qz]
+        - arm: 可选项:
+            - MotionGroup.PrimaryArm: 机器人为双臂时设置左臂tcp坐标系, 单臂时即为机器人tcp坐标系
+            - MotionGroup.SecondaryArm: 机器人为双臂时设置右臂tcp坐标系, 单臂时无效返回-1
+        Returns:
+        - int: request id 指令号, 可用于等待对应运动指令完成等
+        """
+
+        if arm == MotionGroup.Primary:
+            return self.send_set_property_request(PropertyType.TcpPrimary, tcp)
+        elif arm == MotionGroup.SecondaryArm:
+            return self.send_set_property_request(PropertyType.TcpSecondary,
+                                                  tcp)
+        return -1
+
+    def set_global_speed(self, ratio: float) -> int:
+        """async interface - setting robot speed ratio
+        异步接口 - 设置机器人速度百分比
+        Args:
+            - ratio: float: 0.0 ~ 1.0
+        Returns:
+            - int: request id 指令号, 可用于等待对应运动指令完成等
+        """
+        return self.send_set_property_request(PropertyType.SpeedRatio, ratio)
+
+    def clear_error(self) -> int:
+        """async interface - clearing robot error
+        异步接口 - 清除机器人错误
+        Returns:
+            - int: request id 指令号, 可用于等待对应运动指令完成等
+        """
+        return self.send_set_property_request(PropertyType.ClearError, None)
+
+    def set_drag_mode(self, set_enable: bool) -> int:
+        """async interface - setting robot drag mode
+        异步接口 - 开关机器人拖动示教模式, 开启后仅可拖拽, 无法通过运动指令控制机器人运动, 仅真实机器人生效
+        Args:
+            - set_enable: bool: 是否开启拖动示教模式, True: 开启拖动示教模式, False: 关闭拖动示教模式
+        Returns:
+            - int: request id 指令号, 可用于等待对应运动指令完成等
+        """
+        return self.send_set_property_request(PropertyType.EnableDrag,
+                                              set_enable)
+
+    def set_sleep_mode(self, set_enable: bool) -> int:
+        """async interface - setting robot sleep mode
+        异步接口 - 开关机器人休眠模式, 开启后电机将断使能, 机器人无法运动, 仅真实机器人生效
+        Args:
+            - set_enable: bool: 是否开启休眠模式, True: 开启休眠模式(电机断使能), False: 关闭休眠模式(电机使能)
+        Returns:
+            - int: request id 指令号, 可用于等待对应运动指令完成等
+        """
+        return self.send_set_property_request(PropertyType.EnableSleep,
+                                              set_enable)
+
+    def set_pos_limit_check(self, set_enable: bool) -> int:
+        """async interface - setting position limit check
+        异步接口 - 开关位置限位检测
+        """
+        return self.send_set_property_request(PropertyType.EnablePosLimitCheck,
+                                              set_enable)
+
+    def set_safe_level(self, safe_level: float) -> int:
+        """async interface - setting robot safe level
+        异步接口 - 设置机器人安全级别, 仅真实机器人生效
+        Args:
+            - safe_level: float: 安全级别, 取值范围 [0.1, 1], 默认为0.5,
+                值越小机械臂柔性越大, 0.1时机械臂柔性最大, 1.0时机械臂刚性最大, 刚性越大运动跟踪性能越好, 但碰撞时容易造成机械臂损坏
+        Returns:
+            - int: request id 指令号, 可用于等待对应运动指令完成等
+        """
+        return self.send_set_property_request(PropertyType.SafeLevel,
+                                              safe_level)
+
+    def switch_run_mode(self, run_mode: RunMode) -> int:
+        """async interface - setting robot impedance mode
+        异步接口 - 切换机器人运行模式, RunMode.Position: 位置模式, RunMode.Torque: 力矩模式, RunMode.Drag: 拖动模式, RunMode.CartesianImpedance: 笛卡尔阻抗模式
+        Args:
+            - run_mode: RunMode: 运行模式
+        Returns:
+            - int: request id 指令号, 可用于等待对应运动指令完成等
+        """
+        return self.send_set_property_request(PropertyType.SwitchRunMode,
+                                              run_mode.value)
+
+    def set_joint_stiffness(
+            self, stiffness: Union[float, list[float], np.ndarray]) -> int:
+        """async interface - setting joint stiffness
+        异步接口 - 设置力矩模式下的关节刚度
+        Args:
+            - stiffness: float or list[float]: 输入1维数据则设置全部关节刚度相同, 输入多维数据需与双臂关节数目相同(w1为14)则分别设置各关节刚度
+        Returns:
+            - int: request id 指令号, 可用于等待对应运动指令完成等
+        """
+        # 检测维度是否合法
+        if isinstance(stiffness, np.ndarray):
+            stiffness = stiffness.tolist()
+        if isinstance(stiffness, list):
+            if len(stiffness) not in [1, 14]:
+                self.logger.error(
+                    "Joint stiffness length invalid, should be 1 or 14.")
+                return -1
+        return self.send_set_property_request(PropertyType.JointStiffness,
+                                              stiffness)
+
+    def set_joint_damping(
+            self, damping: Union[float, list[float], np.ndarray]) -> int:
+        """async interface - setting joint damping
+        异步接口 - 设置力矩模式下的关节阻尼
+        Args:
+            - damping: float or list[float]: 输入1维数据则设置全部关节阻尼相同, 输入多维数据需与双臂关节数目相同(14维)则分别设置各关节阻尼
+        Returns:
+            - int: request id 指令号, 可用于等待对应运动指令完成等
+        """
+        # 检测维度是否合法
+        if isinstance(damping, np.ndarray):
+            damping = damping.tolist()
+        if isinstance(damping, list):
+            if len(damping) not in [1, 14]:
+                self.logger.error(
+                    "Joint damping length invalid, should be 1 or 14.")
+                return -1
+        return self.send_set_property_request(PropertyType.JointDamping,
+                                              damping)
+
+    def set_joint_integral_ratio(self, ratio: float) -> int:
+        """async interface - setting joint integral ratio
+        异步接口 - 设置力矩模式下的关节积分系数比例 (K_i = K_p * ratio)
+        Args:
+            - ratio: float: 积分系数比例，范围 [0, 1], 默认为0.05, 值越大积分项作用越明显，增大可减小稳态误差, 但过大可能导致系统震荡不稳定
+        Returns:
+            - int: request id 指令号, 可用于等待对应运动指令完成等
+        """
+        if ratio < 0.0 or ratio > 1.0:
+            self.logger.error(
+                "Joint integral ratio invalid, should be in range [0, 1].")
+            return -1
+        return self.send_set_property_request(PropertyType.JointIntegralRatio,
+                                              ratio)
+
+    def set_cartesian_stiffness(
+            self, stiffness: Union[float, list[float], np.ndarray]) -> int:
+        """async interface - setting cartesian stiffness
+        异步接口 - 设置笛卡尔阻抗模式下的笛卡尔刚度
+        Args:
+            - stiffness: float or list[float]: 输入1维数据则设置全部方向刚度相同, 输入多维数据需与双臂笛卡尔空间维度相同(12维)则分别设置各方向刚度
+        Returns:
+            - int: request id 指令号, 可用于等待对应运动指令完成等
+        """
+        # 检测维度是否合法
+        if isinstance(stiffness, np.ndarray):
+            stiffness = stiffness.tolist()
+        if isinstance(stiffness, list):
+            if len(stiffness) not in [1, 12]:
+                self.logger.error(
+                    "Cartesian stiffness length invalid, should be 1 or 12.")
+                return -1
+        return self.send_set_property_request(PropertyType.CartStiffness,
+                                              stiffness)
+
+    def set_cartesian_damping_ratio(
+            self, damping_ratio: Union[float, list[float], np.ndarray]) -> int:
+        """async interface - setting cartesian damping ratio
+        异步接口 - 设置笛卡尔阻抗模式下的笛卡尔阻尼比
+        Args:
+            - damping_ratio: float or list[float]: 笛卡尔阻尼比, 取值范围0.7~1.3, 默认设置为1.0, 输入1维数据则设置全部方向阻尼比相同, 输入多维数据需与双臂笛卡尔空间维度相同(12维)则分别设置各方向阻尼比
+        Returns:
+            - int: request id 指令号, 可用于等待对应运动指令完成等
+        """
+        # Convert arrays before validation so comparisons produce scalar
+        # booleans rather than NumPy boolean arrays.
+        if isinstance(damping_ratio, np.ndarray):
+            damping_ratio = damping_ratio.tolist()
+
+        # 检测输入是否合法
+        if isinstance(damping_ratio, list):
+            if any(dr < 0.7 or dr > 1.3 for dr in damping_ratio):
+                self.logger.error(
+                    "Cartesian damping ratio values invalid, should be in range [0.7, 1.3]."
+                )
+                return -1
+        else:
+            if damping_ratio < 0.7 or damping_ratio > 1.3:
+                self.logger.error(
+                    "Cartesian damping ratio value invalid, should be in range [0.7, 1.3]."
+                )
+                return -1
+        return self.send_set_property_request(PropertyType.CartDampingRatio,
+                                              damping_ratio)
+
+    def set_streaming_ruckig(self, set_enable: bool) -> int:
+        """async interface - setting streaming ruckig
+        异步接口 - 开关关节流控制的 Ruckig 轨迹规划
+        """
+        return self.send_set_property_request(
+            PropertyType.EnableStreamingRuckig, set_enable)
+
+    def set_joint_streaming_bounds(self, max_velocity: float,
+                                   max_acceleration: float,
+                                   max_jerk: float) -> int:
+        """async interface - setting joint streaming bounds
+        异步接口 - 设置关节流控制的速度/加速度/jerk 上限
+        """
+        return self.send_set_property_request(
+            PropertyType.JointStreamingBounds,
+            [max_velocity, max_acceleration, max_jerk])
+
+    def set_butterworth_filter(
+            self, enable: Union[bool, list[float], np.ndarray]) -> int:
+        """async interface - setting butterworth filter
+        异步接口 - 开关 Butterworth 滤波器, 支持单值或逐关节配置
+        """
+        return self.send_set_property_request(
+            PropertyType.EnableButterworthFilter, enable)
+
+    def set_input_shaper(self, enable: Union[bool, list[float],
+                                             np.ndarray]) -> int:
+        """async interface - setting input shaper
+        异步接口 - 开关输入整形器, 支持单值或逐关节配置
+        """
+        return self.send_set_property_request(PropertyType.EnableInputShaper,
+                                              enable)
+
+    def set_chassis_shaper(self, set_enable: bool) -> int:
+        """async interface - setting chassis shaper
+        异步接口 - 开关底盘速度输入整形器
+        """
+        return self.send_set_property_request(PropertyType.EnableChassisShaper,
+                                              set_enable)
+
+    """ ---------------------------------------------------------------------------
+    User interfaces - Move requests
+    用户接口 - 运动指令
+    ----------------------------------------------------------------------------"""
+
+    def stop_move(self) -> int:
+        """async interface - stop robot move
+        异步接口 - 停止机器人运动, 会立即停止机器人当前运动并清除运动队列中未执行的运动指令
+        Returns:
+            - int: request id 指令号, 可用于等待对应运动指令完成等
+        """
+        stop_move_request = MoveRequest(type=MotionType.StopMove)
+        return self.send_move_robot_request(stop_move_request)
+
+    def move_joint_async(
+        self,
+        motion_target: Union[list[float], np.ndarray],
+        motion_group: MotionGroup = MotionGroup.Primary,
+        **kwargs,
+    ) -> int:
+        """async interface - joint move to target joint angles
+        异步接口 - 关节运动到目标关节角度, 如果机器人为双臂时默认设置MotionGroup.Primary为左臂运动
+        Args:
+        - target:
+            - 关节角度list[float]: [j1, j2, j3, ...], 数据长度要与指定的motion_group一致
+
+        - motion_group: 可选项:
+            - MotionGroup.Primary: 机器人为双臂时左臂运动, target长度要与左臂关节数一致
+            - MotionGroup.Secondary: 机器人为双臂时右臂运动, target长度要与右臂关节数一致
+            - MotionGroup.BothArms: 机器人为双臂时双臂运动, target长度要与双臂关节数相加一致, 左臂在前右臂在后:
+                [j1_left, j2_left, ..., jn_left, j1_right, j2_right, ..., jn_right]
+            - MotionGroup.WholeBody: 机器人为双臂时全身运动(包括腿和头), target长度要与全身关节数一致
+
+        - kwargs: 可选参数
+            - speed: 速度百分比 0.01 ~ 2.0
+            - acceleration: 加速度百分比 0.01 ~ 2.0
+            - blend_tolerance: 平滑容忍度, 单位m
+            - todo: 其他参数, 如触发拍照, 夹爪, 语音等动作
+
+        Returns:
+            int: request id 指令号, 可用于等待对应运动指令完成等
+        """
+        move_joint_request = self.make_move_request(
+            motion_type=MotionType.MoveJoint,
+            motion_group=motion_group,
+            motion_target=motion_target,
+            **kwargs,
+        )
+
+        return self.send_move_robot_request(move_joint_request)
+
+    def move_joint_sync(
+        self,
+        motion_target: Union[list[float], np.ndarray],
+        motion_group: MotionGroup = MotionGroup.Primary,
+        **kwargs,
+    ) -> int:
+        """sync interface - joint move to target joint angles
+        同步接口 - move_joint_async的同步版本接口, 会等待此request完成后再返回
+        """
+        request_id = self.move_joint_async(
+            motion_target=motion_target,
+            motion_group=motion_group,
+            **kwargs,
+        )
+        self.wait_request_finish(request_id)
+        return request_id
+
+    def move_line_async(
+        self,
+        motion_target: Union[list[float], np.ndarray],
+        motion_group: MotionGroup = MotionGroup.Primary,
+        **kwargs,
+    ) -> int:
+        """async interface - line move to target cartesian pose
+        异步接口 - 直线运动到目标笛卡尔位姿, 默认设置左臂运动(机器人为双臂时), 单臂时即为机器人当前运动
+        Args:
+        - target: list[float]: 四元数形式位姿: [x, y, z, qw, qx, qy, qz]
+        - arm 可选项:
+            - MotionGroup.PrimaryArm: 机器人为双臂时左臂运动, 单臂时即为机器人当前运动
+            - MotionGroup.SecondaryArm: 机器人为双臂时右臂运动, 单臂时指令无效返回false
+        - kwargs: 可选参数
+            - reference_frame: 参考坐标系 (ReferenceFrame.ArmBase / ReferenceFrame.WorldBase)
+            - speed: 速度百分比 0.01 ~ 2.0
+            - acceleration: 加速度百分比 0.01 ~ 2.0
+            - blend_tolerance: 平滑容忍度, 单位m
+            - todo: 其他参数, 如触发拍照, 夹爪, 语音等动作
+        Returns:
+        - int: request id 指令号, 可用于等待对应运动指令完成等
+        """
+        move_line_request = self.make_move_request(
+            motion_type=MotionType.MoveLine,
+            motion_group=motion_group,
+            motion_target=motion_target,
+            **kwargs,
+        )
+
+        return self.send_move_robot_request(move_line_request)
+
+    def move_line_sync(
+        self,
+        motion_target: Union[list[float], np.ndarray],
+        motion_group: MotionGroup = MotionGroup.Primary,
+        **kwargs,
+    ) -> int:
+        """sync interface - line move to target cartesian pose
+        同步接口 - move_line_async的同步版本接口, 会等待此request完成后再返回
+        - kwargs: 可选参数
+            - reference_frame: 参考坐标系 (ReferenceFrame.ArmBase / ReferenceFrame.WorldBase)
+            - speed: 速度百分比 0.01 ~ 2.0
+            - acceleration: 加速度百分比 0.01 ~ 2.0
+            - blend_tolerance: 平滑容忍度, 单位m
+            - todo: 其他参数, 如触发拍照, 夹爪, 语音等动作
+        """
+        request_id = self.move_line_async(
+            motion_group=motion_group,
+            motion_target=motion_target,
+            **kwargs,
+        )
+        self.wait_request_finish(request_id)
+        return request_id
+
+    def move_traj_async(
+        self,
+        motion_target: Union[list[float], np.ndarray],
+        motion_group: MotionGroup,
+        interval: float,
+        endpoint_index: list[int] = None,
+        **kwargs,
+    ) -> int:
+        """async interface - joint move to target joint angles
+        异步接口 - 多点位轨迹运动, 每运动到指定的endpoint_index会更新self.latest_finished_id, 如果机器人为双臂时默认设置MotionGroup.Primary为左臂运动
+        Args:
+        - target:
+            - 平铺多个点位的关节角度list[float]: [j1, j2, ..., j1, j2, ...], 数据长度为点位数乘以指定的motion_group关节数
+
+        - arm: 可选项:
+            - MotionGroup.PrimaryArm: 机器人为双臂时左臂运动, target长度要与左臂关节数一致
+            - MotionGroup.SecondaryArm: 机器人为双臂时右臂运动, target长度要与右臂关节数一致
+            - MotionGroup.BothArms: 机器人为双臂时双臂运动, target长度要与双臂关节数相加一致, 左臂在前右臂在后:
+                [j1_left, j2_left, ..., jn_left, j1_right, j2_right, ..., jn_right]
+            - MotionGroup.Torso: 仅躯干运动, target长度要与躯干关节数一致
+            - MotionGroup.WholeBody: 机器人为双臂时全身运动(包括腿和头), target长度要与全身关节数一致
+
+        - endpoint_index: 轨迹点中指定每段末尾的点位id, 如[4, 9]表示第4个点和第9个点为对应段的终点, 会在运行到这些点位时更新self.latest_finished_id
+
+        - interval: 轨迹点时间间隔, 单位秒
+
+        - kwargs: 可选参数
+            - blend_tolerance: 平滑容忍度, 单位m
+
+        Returns:
+            int: request id 本次move_traj结束指令号, 可用于等待对应运动指令完成等, -1时为请求被拒绝
+        """
+        move_joint_request = self.make_move_request(
+            motion_type=MotionType.MoveTraj,
+            motion_group=motion_group,
+            motion_target=motion_target,
+            endpoint_index=endpoint_index,
+            interval=interval,
+            **kwargs,
+        )
+
+        return self.send_move_robot_request(move_joint_request)
+
+    """ ---------------------------------------------------------------------------
+    User interfaces - streaming requests
+    用户接口 - 流控制指令
+    ----------------------------------------------------------------------------"""
+
+    def start_joint_streaming_request(
+        self,
+        motion_group: MotionGroup = MotionGroup.Primary,
+        use_filter: Optional[bool] = None,
+        use_velocity: Optional[bool] = None,
+        use_acceleration: Optional[bool] = None,
+        streaming_timeout: Optional[float] = None,
+        streaming_velocity_timeout: Optional[float] = None,
+    ) -> int:
+        """sync interface - start streaming control
+        同步接口 - 开启一个流控制request, 运行流控制指令前需先调用此命令, 仅可在机器人Idle状态下调用, 可先调用wait_move_finish等待之前发送的指令完成让机器人进入Idle状态
+        Args:
+            - motion_group: MotionGroup: 运动组
+            - use_filter: Optional[bool]: 是否启用巴特沃斯滤波, 默认 None 表示使用服务器端默认配置
+            - use_velocity: Optional[bool]: 是否启用速度控制, 默认 None 表示使用服务器端默认配置
+            - use_acceleration: Optional[bool]: 是否启用加速度控制, 默认 None 表示使用服务器端默认配置
+            - streaming_timeout: Optional[float]: 流超时时间(秒), 指令超过此时间未更新则认为流结束
+            - streaming_velocity_timeout: Optional[float]: 速度超时时间(秒), 如果启用了速度控制则超过此时间则速度置零, 比 streaming_timeout 更短以保证安全性
+        Returns:
+            - int: request id 指令号
+        """
+        self.wait_request_finish()
+
+        kwargs = {}
+        if use_filter is not None:
+            kwargs["use_filter"] = use_filter
+        if use_velocity is not None:
+            kwargs["use_velocity"] = use_velocity
+        if use_acceleration is not None:
+            kwargs["use_acceleration"] = use_acceleration
+        if streaming_timeout is not None:
+            kwargs["streaming_timeout"] = streaming_timeout
+        if streaming_velocity_timeout is not None:
+            kwargs["streaming_velocity_timeout"] = streaming_velocity_timeout
+
+        request = MoveRequest(type=MotionType.StartJointStreaming,
+                              motion_group=motion_group,
+                              kwargs=kwargs)
+        return self.send_move_robot_request(request)
+
+    def start_ee_pose_streaming_request(
+        self,
+        motion_group: MotionGroup = MotionGroup.Primary,
+        use_filter: Optional[bool] = None,
+    ) -> int:
+        """sync interface - start streaming control
+        同步接口 - 开启一个流控制request, 运行流控制指令前需先调用此命令, 仅可在机器人Idle状态下调用, 可先调用wait_move_finish等待之前发送的指令完成让机器人进入Idle状态
+        Args:
+            - motion_group: MotionGroup: 运动组
+            - use_filter: Optional[bool]: 是否启用巴特沃斯滤波, 默认 None 表示使用服务器端默认配置
+        Returns:
+            - int: request id 指令号
+        """
+        self.wait_request_finish()
+
+        kwargs = {}
+        if use_filter is not None:
+            kwargs["use_filter"] = use_filter
+
+        request = MoveRequest(type=MotionType.StartEEPoseStreaming,
+                              motion_group=motion_group,
+                              kwargs=kwargs)
+        return self.send_move_robot_request(request)
+
+    def start_ee_velocity_streaming_request(
+            self,
+            motion_group: MotionGroup = MotionGroup.Primary,
+            reference_frame: Optional[ReferenceFrame] = None  # 参考坐标系
+    ) -> int:
+        """sync interface - start streaming control
+        同步接口 - 开启一个流控制request, 运行流控制指令前需先调用此命令, 仅可在机器人Idle状态下调用, 可先调用wait_move_finish等待之前发送的指令完成让机器人进入Idle状态
+        Returns:
+            - int: request id 指令号
+        """
+        self.wait_request_finish()
+
+        kwargs = {}
+        if reference_frame is not None:
+            kwargs["reference_frame"] = reference_frame.name
+
+        request = MoveRequest(type=MotionType.StartEEVelocityStreaming,
+                              motion_group=motion_group,
+                              kwargs=kwargs)
+        return self.send_move_robot_request(request)
+
+    """ ---------------------------------------------------------------------------
+    User interfaces - make move requests functions
+    用户接口 - 运动指令生成
+    ----------------------------------------------------------------------------"""
+
+    def make_move_request(
+        self,
+        motion_type: MotionType,
+        motion_group: MotionGroup = MotionGroup.Primary,
+        motion_target: Optional[Union[list[float], np.ndarray]] = None,
+        **kwargs,
+    ) -> MoveRequest:
+        """create a move joint request
+        创建一个关节运动指令
+        Args:
+            - type: MotionType: 运动类型
+            - motion_group: 运动部位
+            - value: 目标位置
+
+        - kwargs 可选参数
+            - reference_frame: 参考坐标系 (ReferenceFrame.ArmBase / ReferenceFrame.WorldBase)
+            - speed: 速度百分比 0.01 ~ 2.0
+            - acceleration: 加速度百分比 0.01 ~ 2.0
+            - blend_tolerance: 平滑容忍度, 单位m
+        Returns:
+            MoveRequest: 运动指令
+        """
+        move_joint_request = MoveRequest(
+            type=motion_type,
+            motion_group=motion_group,
+            value=motion_target,
+            kwargs=kwargs,
+        )
+        return move_joint_request
+
+    def send_move_request_list(self,
+                               request_list: list[MoveRequest]) -> list[int]:
+        """async interface - execute request list
+        异步接口 - 执行请求队列
+        Args:
+            - request_list: list[MoveRequest] 运动请求队列下发
+        Returns:
+            - list[int]: request id 请求号队列
+        """
+        request_ids = []
+        for request in request_list:
+            request_id = self.send_move_robot_request(request)
+            request_ids.append(request_id)
+        return request_ids
+
+    """---------------------------------------------------------------------------
+    Low-level abstract interfaces, need to be implemented by derived classes
+    底层抽象接口, 需由派生类实现
+    ----------------------------------------------------------------------------"""
+
+    @abstractmethod
+    def connect_robot(self, timeout_sec: float = 0.5, ip: str = None) -> bool:
+        """Connect to the robot.
+        连接机器人
+        Args:
+            - ip: str: 机器人IP地址 (Ros2连接无需指定)
+        Returns:
+            - bool: True if connected successfully, False otherwise
+        """
+        pass
+
+    @abstractmethod
+    def wait_second(self, wait_second: float):
+        """sync interface - wait for a specified time in seconds
+        同步接口 - 等待指定时间, 单位秒
+        Args:
+            wait_second: float: 等待时间, 单位秒
+        """
+        pass
+
+    @abstractmethod
+    def wait_request_finish(self,
+                            request_id: Optional[int] = None,
+                            timeout: float = 30.0) -> bool:
+        """sync interface - wait for move request to finish
+        同步接口 - 等待运动请求完成
+        Args:
+            request_id: int: 运动请求号, 为空时默认等待最后一个请求完成
+            timeout: float: 超时时间, 默认30秒
+        Returns:
+            bool: true if success, false if fail or timeout
+        """
+        pass
+
+    @abstractmethod
+    def send_set_property_request(self, type: PropertyType, value) -> bool:
+        """async interface - setting interfaces for all types of properties
+        异步接口 - 设置机器人属性底层通用接口
+        Args:
+          type 可选项:                 对应 value 类型:
+            PropertyType.SpeedRatio          ->  float: 0.0 ~ 1.0
+            PropertyType.TcpPrimary          ->  PoseQuaternion
+            PropertyType.TcpSecondary        ->  PoseQuaternion
+            PropertyType.ClearError          ->  None
+        Returns:
+            bool: true if success, false if fail
+        """
+        pass
+
+    @abstractmethod
+    def send_move_robot_request(self, request: MoveRequest) -> int:
+        """async interface - execute request
+        异步接口 - 执行指令通用接口
+        Args:
+            request: MoveRequest 运动指令下发
+        Returns:
+            int: request id 指令号
+        """
+        pass
+
+    @abstractmethod
+    def send_streaming_command(self,
+                               position: Union[list[float], np.ndarray],
+                               streaming_finished: bool = False) -> bool:
+        """async interface - send streaming control point, need to start streaming mode first
+        异步接口 - 发送流控制点位, 需先调用start_streaming_request
+        Args:
+            position: list[float]或np.ndarray, 包含目标位置
+            streaming_finished: 是否是本次流控制最后的点位, true - 停止流控制, false - 继续流控制
+        Returns:
+            bool: true - send success, false - send fail
+        """
+        pass
+
+    @abstractmethod
+    def close_client(self):
+        """sync interface - stop client from robot server
+        同步接口 - 关闭client, 不会影响server正在进行的动作
+        """
+        pass

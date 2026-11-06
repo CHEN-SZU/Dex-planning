@@ -1,0 +1,398 @@
+'''
+----------------------------------------------------------------------------
+Copyright (c) 2021-2026 DexForce Technology Co., Ltd.
+
+All rights reserved.
+----------------------------------------------------------------------------
+'''
+
+import json
+import numpy as np
+import pinocchio as pin
+from pathlib import Path
+from ...end_effector_client import EndEffectorParamsRegistry
+from ...common import get_logger, DATA_DIR, CACHE_DEXE_DATA
+from ..kinematics.pinocchio_kinematics import PinocchioMappingGenerator
+
+from dexe_rp import RobotVersion, EndEffectorType
+from dexe_rp.toolkits.data import get_data_path
+
+
+class W1Params:
+
+    def __init__(self,
+                 robot_version: RobotVersion,
+                 left_ee_type: EndEffectorType = None,
+                 right_ee_type: EndEffectorType = None):
+        self.logger = get_logger()
+
+        self._robot_version = robot_version
+        if not self._robot_version.robot_family.startswith("w1"):
+            raise ValueError(f"Unsupport RobotVersion: {self._robot_version}.")
+
+        self._left_ee_type = left_ee_type
+        self._left_ee_params = None
+        self.left_arm_ee_dofs = None
+        if self._left_ee_type is not None:
+            self._left_ee_params = EndEffectorParamsRegistry.get(left_ee_type)
+            self.left_arm_ee_dofs = self._left_ee_params.dof
+
+        self._right_ee_type = right_ee_type
+        self._right_ee_params = None
+        self.right_arm_ee_dofs = None
+        if self._right_ee_type is not None:
+            self._right_ee_params = EndEffectorParamsRegistry.get(right_ee_type)
+            self.right_arm_ee_dofs = self._right_ee_params.dof
+
+        robot_urdf = get_data_path(
+            str(Path(self._robot_version.robot_family) / "robot.urdf"),
+            self._robot_version.version_value)
+        pinocchio_mapping_generator = PinocchioMappingGenerator(
+            robot_version=self._robot_version,
+            left_end_effector_type=None,
+            right_end_effector_type=None)
+        self._pin2real_idx = pinocchio_mapping_generator.robot_pin2real_mapping
+        self._pin_model = pin.buildModelFromUrdf(robot_urdf)
+
+        self.torso_dofs = 4
+        self.head_dofs = 2
+        self.arm_dofs = 7
+        self.full_body_dofs = 20
+
+        # IndexManager
+        self.torso_index = list(range(4))
+        self.head_index = [4, 5]
+        self.left_arm_index = list(range(6, 13))
+        self.right_arm_index = list(range(13, 20))
+        self.full_body_index = list(range(20))
+
+        self.index_infos = {
+            "torso": {
+                "dofs": self.torso_dofs,
+                "index": self.torso_index
+            },
+            "head": {
+                "dofs": self.head_dofs,
+                "index": self.head_index
+            },
+            "left_arm": {
+                "dofs": self.arm_dofs,
+                "index": self.left_arm_index
+            },
+            "right_arm": {
+                "dofs": self.arm_dofs,
+                "index": self.right_arm_index
+            },
+            "full_body": {
+                "dofs": self.full_body_dofs,
+                "index": self.full_body_index
+            }
+        }
+
+        self.names = ("torso", "head", "left_arm", "right_arm", "full_body")
+        self.arm_names = ["left_arm", "right_arm"]
+        self.arm_ee_names = ["left_arm_ee", "right_arm_ee"]
+
+        # Kinematics Params
+        self.qpos_lb = self._pin_model.lowerPositionLimit[self._pin2real_idx]
+        self.qpos_ub = self._pin_model.upperPositionLimit[self._pin2real_idx]
+        self.torso_lb = self.qpos_lb[self.torso_index]
+        self.torso_ub = self.qpos_ub[self.torso_index]
+        self.head_lb = self.qpos_lb[self.head_index]
+        self.head_ub = self.qpos_ub[self.head_index]
+        self.left_arm_lb = self.qpos_lb[self.left_arm_index]
+        self.left_arm_ub = self.qpos_ub[self.left_arm_index]
+        self.right_arm_lb = self.qpos_lb[self.right_arm_index]
+        self.right_arm_ub = self.qpos_ub[self.right_arm_index]
+
+        # yapf: disable
+        self.default_qvel = np.array([0.3] * self.full_body_dofs)
+        self.min_qvel = np.array([0.05] * self.full_body_dofs)
+        self.max_qvel = np.array([1., 1., 1., 1., 6.28, 6.28,
+                                  6.28, 6.28, 6.28, 6.28, 6.28, 6.28, 6.28,
+                                  6.28, 6.28, 6.28, 6.28, 6.28, 6.28, 6.28])
+        self.max_qacc = np.array([1., 1., 1., 1., 40., 40.,
+                                  10., 10., 10., 20., 40., 40., 40.,
+                                  10., 10., 10., 20., 40., 40., 40.])
+        self.max_qjerk = 10.0 * self.max_qacc
+
+        self.default_vel = np.array([0.1, 0.1, 0.1, np.pi/4, np.pi/4, np.pi/4])
+        self.min_vel = np.array([0.01, 0.01, 0.01, np.pi/80, np.pi/80, np.pi/80])
+        self.max_vel = 5.0 * self.default_vel
+        self.max_acc = 5.0 * self.max_vel
+        self.max_jerk = 10.0 * self.max_acc
+
+        self.home_qpos = np.deg2rad([45, -90, 45, 0, 0, 0,
+                                     5, -45, -5, -90, 0, -15, 0,
+                                     -5, 45, 5, 90, 0, 15, 0])
+        self.update_params()
+        self._generate_ignored_collision_pairs_file()
+        # yapf: enable
+
+    def _generate_ignored_collision_pairs_file(self):
+        file_path = DATA_DIR / "ignored_collision_pairs.json"
+        if not file_path.exists() or file_path.stat().st_size == 0:
+            self.logger.info(
+                f"{str(file_path)} does not exist, would be created automatically with default values."
+            )
+            template_json_data = {
+                "ankle": ["base_link", "knee"],
+                "knee": ["ankle", "buttock"],
+                "buttock": ["knee", "waist"],
+                "waist": ["buttock", "left_j1", "right_j1", "neck1", "neck2"],
+                "neck1": ["waist", "neck2"],
+                "neck2": ["neck1", "waist"],
+                "left_j1": ["waist", "left_j2"],
+                "left_j2": ["left_j1", "left_j3"],
+                "left_j3": ["left_j2", "left_j4"],
+                "left_j4": ["left_j3", "left_j5"],
+                "left_j5": ["left_j4", "left_j6"],
+                "left_j6": ["left_j5", "left_j7"],
+                "left_j7": ["left_j6"],
+                "right_j1": ["waist", "right_j2"],
+                "right_j2": ["right_j1", "right_j3"],
+                "right_j3": ["right_j2", "right_j4"],
+                "right_j4": ["right_j3", "right_j5"],
+                "right_j5": ["right_j4", "right_j6"],
+                "right_j6": ["right_j5", "right_j7"],
+                "right_j7": ["right_j6"],
+                "torso1": ["base_link", "torso2"],
+                "torso2": ["torso1", "torso3"],
+                "torso3": ["torso2", "torso4"],
+                "torso4": ["torso3", "arml1", "armr1", "head1", "head2"],
+                "head1": ["torso4", "head2"],
+                "head2": ["head1", "torso4"],
+                "arml1": ["torso4", "arml2"],
+                "arml2": ["arml1", "arml3"],
+                "arml3": ["arml2", "arml4"],
+                "arml4": ["arml3", "arml5"],
+                "arml5": ["arml4", "arml6"],
+                "arml6": ["arml5", "arml7"],
+                "arml7": ["arml6"],
+                "armr1": ["torso4", "armr2"],
+                "armr2": ["armr1", "armr3"],
+                "armr3": ["armr2", "armr4"],
+                "armr4": ["armr3", "armr5"],
+                "armr5": ["armr4", "armr6"],
+                "armr6": ["armr5", "armr7"],
+                "armr7": ["armr6"],
+                "ankle_pitch_link": ["base_link", "knee_pitch_link"],
+                "knee_pitch_link": ["ankle_pitch_link", "buttock_pitch_link"],
+                "buttock_pitch_link": ["knee_pitch_link", "waist_yaw_link"],
+                "waist_yaw_link": [
+                    "knee_pitch_link", "shoulder_pitch_l_j1_link",
+                    "shoulder_pitch_r_j1_link", "head_yaw_j1_link",
+                    "head_pitch_j2_link"
+                ],
+                "head_yaw_j1_link": ["waist_yaw_link", "head_pitch_j2_link"],
+                "head_pitch_j2_link": ["head_yaw_j1_link", "waist_yaw_link"],
+                "shoulder_pitch_l_j1_link": [
+                    "waist_yaw_link", "shoulder_roll_l_j2_link"
+                ],
+                "shoulder_roll_l_j2_link": [
+                    "shoulder_pitch_l_j1_link", "elbow_pitch_l_j3_link"
+                ],
+                "elbow_pitch_l_j3_link": [
+                    "shoulder_roll_l_j2_link", "elbow_yaw_l_j4_link"
+                ],
+                "elbow_yaw_l_j4_link": [
+                    "elbow_pitch_l_j3_link", "wrist_pitch_l_j5_link"
+                ],
+                "wrist_pitch_l_j5_link": [
+                    "elbow_yaw_l_j4_link", "wrist_yaw_l_j6_link"
+                ],
+                "wrist_yaw_l_j6_link": [
+                    "wrist_pitch_l_j5_link", "wrist_roll_l_j7_link"
+                ],
+                "wrist_roll_l_j7_link": ["wrist_yaw_l_j6_link"],
+                "shoulder_pitch_r_j1_link": [
+                    "waist_yaw_link", "shoulder_roll_r_j2_link"
+                ],
+                "shoulder_roll_r_j2_link": [
+                    "shoulder_pitch_r_j1_link", "elbow_pitch_r_j3_link"
+                ],
+                "elbow_pitch_r_j3_link": [
+                    "shoulder_roll_r_j2_link", "elbow_yaw_r_j4_link"
+                ],
+                "elbow_yaw_r_j4_link": [
+                    "elbow_pitch_r_j3_link", "wrist_pitch_r_j5_link"
+                ],
+                "wrist_pitch_r_j5_link": [
+                    "elbow_yaw_r_j4_link", "wrist_yaw_r_j6_link"
+                ],
+                "wrist_yaw_r_j6_link": [
+                    "wrist_pitch_r_j5_link", "wrist_roll_r_j7_link"
+                ],
+                "wrist_roll_r_j7_link": ["wrist_yaw_r_j6_link"]
+            }
+            file_path.write_text(json.dumps(template_json_data,
+                                            indent=4,
+                                            ensure_ascii=False),
+                                 encoding="utf-8")
+
+    def update_params(self, file_path=DATA_DIR / "config.json") -> bool:
+        if not file_path.exists() or file_path.stat().st_size == 0:
+            self.logger.warning(
+                f"{str(file_path)} does not exist, would be created automatically with default values."
+            )
+            template_json_data = self._parse_to_dict()
+            file_path.write_text(json.dumps(template_json_data,
+                                            indent=4,
+                                            ensure_ascii=False),
+                                 encoding="utf-8")
+            return False
+
+        with open(file_path, "rb") as f:
+            json_data = json.load(f)
+            self._update_from_dict(json_data)
+
+        self.max_qjerk = 10.0 * self.max_qacc
+
+    def _update_from_dict(self, data: dict) -> bool:
+        home_qpos = data.get("home_qpos")
+        if home_qpos is not None:
+            if len(home_qpos) != self.full_body_dofs:
+                self.logger.error(f"home_qpos dimension mismatch!")
+                return False
+            else:
+                self.home_qpos = np.array(home_qpos)
+                self.logger.debug(f"Update home_qpos from json.")
+
+        qpos_limits = data.get("qpos_limits")
+        if qpos_limits is not None:
+            if np.array(qpos_limits).shape != (self.full_body_dofs, 2):
+                self.logger.error(f"qpos_limits dimension mismatch!")
+                return False
+            else:
+                self.qpos_lb = np.array(qpos_limits)[:, 0]
+                self.qpos_ub = np.array(qpos_limits)[:, 1]
+
+                self.torso_lb = np.maximum(self.torso_lb,
+                                           self.qpos_lb[self.torso_index])
+                self.head_lb = np.maximum(self.head_lb,
+                                          self.qpos_lb[self.head_index])
+                self.left_arm_lb = np.maximum(self.left_arm_lb,
+                                              self.qpos_lb[self.left_arm_index])
+                self.right_arm_lb = np.maximum(
+                    self.right_arm_lb, self.qpos_lb[self.right_arm_index])
+
+                self.torso_ub = np.minimum(self.torso_ub,
+                                           self.qpos_ub[self.torso_index])
+                self.head_ub = np.minimum(self.head_ub,
+                                          self.qpos_ub[self.head_index])
+                self.left_arm_ub = np.minimum(self.left_arm_ub,
+                                              self.qpos_ub[self.left_arm_index])
+                self.right_arm_ub = np.minimum(
+                    self.right_arm_ub, self.qpos_ub[self.right_arm_index])
+                self.logger.debug(f"Update qpos_limits from json.")
+
+        min_qvel = data.get("min_qvel")
+        if min_qvel is not None:
+            if len(min_qvel) != self.full_body_dofs:
+                self.logger.error(f"min_qvel dimension mismatch!")
+                return False
+            else:
+                self.min_qvel = np.clip(min_qvel, 0., 10)
+                self.logger.debug(f"Update min_qvel from json.")
+
+        max_qvel = data.get("max_qvel")
+        if max_qvel is not None:
+            if len(max_qvel) != self.full_body_dofs:
+                self.logger.error(f"max_qvel dimension mismatch!")
+                return False
+            else:
+                self.max_qvel = np.clip(max_qvel, 0., 10)
+                self.logger.debug(f"Update max_qvel from json.")
+
+        max_qacc = data.get("max_qacc")
+        if max_qacc is not None:
+            if len(max_qacc) != self.full_body_dofs:
+                self.logger.error(f"max_qacc dimension mismatch!")
+                return False
+            else:
+                self.max_qacc = np.clip(max_qacc, 0., 100)
+                self.logger.debug(f"Update max_qacc from json.")
+
+        max_qjerk = data.get("max_qjerk")
+        if max_qjerk is not None:
+            if len(max_qjerk) != self.full_body_dofs:
+                self.logger.error(f"max_qjerk dimension mismatch!")
+                return False
+            else:
+                self.max_qjerk = np.clip(max_qjerk, 0., 1000)
+                self.logger.debug(f"Update max_qjerk from json.")
+
+        default_qvel = data.get("default_qvel")
+        if default_qvel is not None:
+            if len(default_qvel) != self.full_body_dofs:
+                self.logger.error(f"default_qvel dimension mismatch!")
+                return False
+            else:
+                self.default_qvel = np.clip(
+                    default_qvel, np.array([0.] * self.full_body_dofs),
+                    self.max_qvel)
+                self.logger.debug(f"Update default_qvel from json.")
+
+        min_vel = data.get("min_vel")
+        if min_vel is not None:
+            if len(min_vel) != 6:
+                self.logger.error(f"min_vel dimension mismatch!")
+                return False
+            else:
+                self.min_vel = np.clip(min_vel, 0., 5)
+                self.logger.debug(f"Update min_vel from json.")
+
+        max_vel = data.get("max_vel")
+        if max_vel is not None:
+            if len(max_vel) != 6:
+                self.logger.error(f"max_vel dimension mismatch!")
+                return False
+            else:
+                self.max_vel = np.clip(max_vel, 0., 5)
+                self.logger.debug(f"Update max_vel from json.")
+
+        max_acc = data.get("max_acc")
+        if max_acc is not None:
+            if len(max_acc) != 6:
+                self.logger.error(f"max_acc dimension mismatch!")
+                return False
+            else:
+                self.max_acc = np.clip(max_acc, 0., 50)
+                self.logger.debug(f"Update max_acc from json.")
+
+        max_jerk = data.get("max_jerk")
+        if max_jerk is not None:
+            if len(max_jerk) != 6:
+                self.logger.error(f"max_jerk dimension mismatch!")
+                return False
+            else:
+                self.max_jerk = np.clip(max_jerk, 0., 500)
+                self.logger.debug(f"Update max_jerk from json.")
+
+        default_vel = data.get("default_vel")
+        if default_vel is not None:
+            if len(default_vel) != 6:
+                self.logger.error(f"default_vel dimension mismatch!")
+                return False
+            else:
+                self.default_vel = np.clip(default_vel, np.array([0.] * 6),
+                                           self.max_vel)
+                self.logger.debug(f"Update default_vel from json.")
+
+    # TODO: yaml
+    def _parse_to_dict(self) -> dict:
+        data = {
+            "home_qpos": self.home_qpos.tolist(),
+            "qpos_limits": np.vstack((self.qpos_lb, self.qpos_ub)).T.tolist(),
+            "min_qvel": self.min_qvel.tolist(),
+            "max_qvel": self.max_qvel.tolist(),
+            "max_qacc": self.max_qacc.tolist(),
+            "max_qjerk": self.max_qjerk.tolist(),
+            "default_qvel": self.default_qvel.tolist(),
+            "min_vel": self.min_vel.tolist(),
+            "max_vel": self.max_vel.tolist(),
+            "max_acc": self.max_acc.tolist(),
+            "max_jerk": self.max_jerk.tolist(),
+            "default_vel": self.default_vel.tolist(),
+        }
+        return data

@@ -1,0 +1,190 @@
+#include "ei_input_shaper.h"
+
+#include <algorithm>
+#include <iostream>
+#include <numeric>
+
+// EI输入整形器实现 - 用于抑制机械系统振动
+EIInputShaper::EIInputShaper(
+    Type type, double natural_freq, double sampling_time, double max_ramp_rate, double vibration_tol)
+    : type_(type),
+      natural_freq_(natural_freq),
+      sampling_time_(sampling_time),
+      max_ramp_rate_per_sample_(max_ramp_rate * sampling_time_),
+      vibration_tol_(vibration_tol) {
+    CalculateCoefficients();
+}
+
+void EIInputShaper::CalculateCoefficients() {
+    // NONE类型只需要最小缓冲区，不计算滤波系数
+    if (type_ == Type::NONE) {
+        T3_ = 0;
+        T2_ = 0;
+        T4_ = 0;
+        A1_ = 1.0;  // 透传系数
+        A2_ = 0.0;
+        A3_ = 0.0;
+        A4_ = 0.0;
+        buffer_.resize(1, 0.0);
+        buffer_ch1_.resize(1, 0.0);
+        buffer_ch2_.resize(1, 0.0);
+        initialized_ = false;
+        return;
+    }
+
+    double vib_period = 1.0 / natural_freq_;
+    int T_d = static_cast<int>(std::round(vib_period / sampling_time_));
+    T3_ = T_d;
+
+    if (type_ == EI) {
+        double V = vibration_tol_;
+        double z = damping_ratio_;
+        double z2 = z * z;
+        double V2 = V * V;
+
+        A1_ = 0.24968 + 0.24961 * V + 0.80008 * z + 1.23328 * V * z + 0.49599 * z2 + 3.17316 * V * z2;
+        A3_ = 0.25149 + 0.21474 * V - 0.83249 * z + 1.41498 * V * z + 0.85181 * z2 - 4.90094 * V * z2;
+        A2_ = 1.0 - A1_ - A3_;
+
+        double T2_time = vib_period * (0.4999 + 0.46159 * V * z + 4.26169 * V * z2 + 1.75601 * V * z * z2 +
+                                       8.57843 * V2 * z - 108.644 * V2 * z2 + 336.989 * V2 * z * z2);
+        T2_ = static_cast<int>(std::round(T2_time / sampling_time_));
+        if (T2_ < 0) T2_ = 0;
+        if (T2_ > T3_) T2_ = T3_;
+
+    } else if (type_ == TWO_HUMP_EI) {
+        CalculateTwoHumpCoefficients();
+    }
+
+    // 缓冲区大小需要能容纳所有需要访问的时间点
+    int buffer_size = T3_ + 1;
+    if (type_ == TWO_HUMP_EI) {
+        buffer_size = std::max(buffer_size, T4_ + 1);
+    }
+    buffer_.resize(buffer_size, 0.0);
+    buffer_ch1_.resize(buffer_size, 0.0);
+    buffer_ch2_.resize(buffer_size, 0.0);
+    initialized_ = false;
+}
+
+void EIInputShaper::CalculateTwoHumpCoefficients() {
+    static const std::vector<std::vector<double>> M = {
+        {0.49890, 0.16270, -0.54262, 6.16180},  {0.99748, 0.18382, -1.58270, 8.17120},
+        {1.49920, -0.09297, -0.28338, 1.85710}, {0.16054, 0.76699, 2.26560, -1.22750},
+        {0.33911, 0.45081, -2.58080, 1.73650},  {0.34089, -0.61533, -0.68765, 0.42261},
+        {0.15997, -0.60246, 1.00280, -0.93145}};
+
+    double z = damping_ratio_;
+    double z2 = z * z;
+    double z3 = z2 * z;
+    std::vector<double> ZETA = {1.0, z, z2, z3};
+
+    double vib_period = 1.0 / natural_freq_;
+
+    A1_ = std::inner_product(M[3].begin(), M[3].end(), ZETA.begin(), 0.0);
+    A2_ = std::inner_product(M[4].begin(), M[4].end(), ZETA.begin(), 0.0);
+    A3_ = std::inner_product(M[5].begin(), M[5].end(), ZETA.begin(), 0.0);
+    A4_ = std::inner_product(M[6].begin(), M[6].end(), ZETA.begin(), 0.0);
+
+    T2_ = static_cast<int>(
+        std::round(std::inner_product(M[0].begin(), M[0].end(), ZETA.begin(), 0.0) * vib_period / sampling_time_));
+    T3_ = static_cast<int>(
+        std::round(std::inner_product(M[1].begin(), M[1].end(), ZETA.begin(), 0.0) * vib_period / sampling_time_));
+    T4_ = static_cast<int>(
+        std::round(std::inner_product(M[2].begin(), M[2].end(), ZETA.begin(), 0.0) * vib_period / sampling_time_));
+}
+
+double EIInputShaper::RampImpl(double target, double current, double max_rate) {
+    double diff = target - current;
+
+    if (std::abs(diff) <= max_rate) {
+        return target;
+    }
+
+    if (diff > 0) {
+        return current + max_rate;
+    } else {
+        return current - max_rate;
+    }
+}
+
+double EIInputShaper::Apply(double input) {
+    double ramped_input = input;
+    if (!ramp_initialized_) {
+        ramp_output_ = input;
+        ramp_initialized_ = true;
+    } else {
+        ramp_output_ = RampImpl(input, ramp_output_, max_ramp_rate_per_sample_);
+    }
+    ramped_input = ramp_output_;
+
+    return ApplyImpl(buffer_, ramped_input);
+}
+
+std::pair<double, double> EIInputShaper::Apply(double input_ch1, double input_ch2) {
+    double ramped_input_ch1 = input_ch1;
+    double ramped_input_ch2 = input_ch2;
+
+    if (!ramp_initialized_) {
+        ramp_output_ch1_ = input_ch1;
+        ramp_output_ch2_ = input_ch2;
+        ramp_initialized_ = true;
+    } else {
+        ramp_output_ch1_ = RampImpl(input_ch1, ramp_output_ch1_, max_ramp_rate_per_sample_);
+        ramp_output_ch2_ = RampImpl(input_ch2, ramp_output_ch2_, max_ramp_rate_per_sample_);
+    }
+    ramped_input_ch1 = ramp_output_ch1_;
+    ramped_input_ch2 = ramp_output_ch2_;
+
+    return {ApplyImpl(buffer_ch1_, ramped_input_ch1), ApplyImpl(buffer_ch2_, ramped_input_ch2)};
+}
+
+double EIInputShaper::ApplyImpl(std::deque<double>& buffer, double input) {
+    if (!initialized_) {
+        std::fill(buffer.begin(), buffer.end(), input);
+        initialized_ = true;
+        return input;
+    }
+
+    buffer.pop_front();
+    buffer.push_back(input);
+
+    // NONE类型不进行滤波，直接返回输入
+    if (type_ == Type::NONE) {
+        return input;
+    }
+
+    double output = A1_ * buffer.back();
+
+    if (type_ == EI) {
+        if (T2_ > 0 && static_cast<int>(buffer.size()) > T2_) {
+            output += A2_ * buffer[buffer.size() - 1 - T2_];
+        }
+        if (T3_ > 0 && static_cast<int>(buffer.size()) > T3_) {
+            output += A3_ * buffer[buffer.size() - 1 - T3_];
+        }
+    } else if (type_ == TWO_HUMP_EI) {
+        if (T2_ > 0 && static_cast<int>(buffer.size()) > T2_) {
+            output += A2_ * buffer[buffer.size() - 1 - T2_];
+        }
+        if (T3_ > 0 && static_cast<int>(buffer.size()) > T3_) {
+            output += A3_ * buffer[buffer.size() - 1 - T3_];
+        }
+        if (T4_ > 0 && static_cast<int>(buffer.size()) > T4_) {
+            output += A4_ * buffer[buffer.size() - 1 - T4_];
+        }
+    }
+
+    return output;
+}
+
+void EIInputShaper::Reset() {
+    std::fill(buffer_.begin(), buffer_.end(), 0.0);
+    std::fill(buffer_ch1_.begin(), buffer_ch1_.end(), 0.0);
+    std::fill(buffer_ch2_.begin(), buffer_ch2_.end(), 0.0);
+    initialized_ = false;
+    ramp_output_ = 0.0;
+    ramp_output_ch1_ = 0.0;
+    ramp_output_ch2_ = 0.0;
+    ramp_initialized_ = false;
+}

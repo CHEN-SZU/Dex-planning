@@ -1,0 +1,71 @@
+'''
+----------------------------------------------------------------------------
+Copyright (c) 2021-2026 DexForce Technology Co., Ltd.
+
+All rights reserved.
+----------------------------------------------------------------------------
+'''
+
+from enum import Enum
+
+
+# yapf: disable
+class StatusCode(Enum):
+    SUCCESS = 1
+
+    FAIL = -100
+
+    INPUT_INVALID = -200
+    DIM_MISMATCH = -201
+    NAME_MISMATCH = -202
+    INPUT_EMPTY = -203
+    SIM_MODE_NOT_SUPPORT = -204
+
+    ROBOT_STATUS_INVALID = -300
+    ROBOT_NOT_CONNECT = -301
+    ROBOT_NOT_ENABLE = -302
+    ROBOT_MOVE_FAIL = -303
+    ROBOT_CLEAR_ERROR_FAIL = -304
+    ROBOT_SET_DRAG_FAIL = -305
+    ROBOT_SET_SAFE_LEVEL_FAIL = -306
+
+    LEFT_EE_NOT_CONNECT = -400
+    RIGHT_EE_NOT_CONNECT = -401
+    EE_MOVE_FAIL = -402
+    EE_GET_INFO_FAIL = -403
+
+    CHASSIS_NOT_USE = -500
+    CHASSIS_NOT_CONNECT = -501
+    CHASSIS_MOVE_NAV2_FAIL = -502
+    CHASSIS_MOVE_ROAD_NAV_FAIL = -503
+    CHASSIS_MOVE_CTRL_FAIL = -504
+    CHASSIS_GET_POSE_FAIL = -505
+    CHASSIS_GET_BATTERY_FAIL = -506
+    CHASSIS_GET_NAV_POINTS_FAIL = -507
+    CHASSIS_SET_AUTO_CHARGING_FAIL = -508
+    CHASSIS_CANCEL_AUTO_CHARGING_FAIL = -509
+    CHASSIS_CANCEL_MOTION_FAIL = -510
+    CHASSIS_SET_FOOTPRINT_FAIL = -511
+    CHASSIS_SET_NAV_TOLERANCE_FAIL = -512
+    CHASSIS_SET_INFLATION_RADIUS_FAIL = -513
+    CHASSIS_SET_FOLLOW_VELOCITY_LIMITS_FAIL = -514
+    CHASSIS_MOVE_SCHED_FAIL = -515
+
+    IK_FAIL = -600
+    FK_FAIL = -601
+    SET_TCP_FAIL = -602
+    GET_TCP_FAIL = -603
+    EXCEED_LIMIT = -604
+    PLAN_PATH_FAIL = -605
+    PLAN_TRAJ_FAIL = -606
+    COLLISION_FAIL = -607
+
+    NOT_AT_START = -700
+    GOAL_NOT_REACH = -701
+
+    STOP_MOVE = -800
+    STOP_MOVE_FAIL = -801
+
+    TIME_OUT = -900
+
+# yapf: enable

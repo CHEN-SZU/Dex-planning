@@ -1,0 +1,2264 @@
+{
+  "export_date": "2026-11-06",
+  "target": "ksjshssjj02929283-rgb/Dex-planning",
+  "kind": "selected_source_snapshot",
+  "sources": {
+    "dexe_robot_client": {
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "branch": "main_w1",
+      "version": "0.8.2"
+    },
+    "dexe_robot_server": {
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "branch": "dev_w1",
+      "version": "0.5.1",
+      "bundled_dexe_rp_header_version": "0.4.4"
+    },
+    "dexe_rp_installed_python": {
+      "version": "0.4.2",
+      "origin": "PC1 installed package; selected Python source only"
+    }
+  },
+  "files": [
+    {
+      "destination": "client/MANIFEST.in",
+      "source": "dexe_robot_client",
+      "source_path": "MANIFEST.in",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "936092138b6b988a37a72ffeef6a631bbdbacd637a293b8e5d8398e8f2fbc9a6",
+      "bytes": 70
+    },
+    {
+      "destination": "client/pyproject.toml",
+      "source": "dexe_robot_client",
+      "source_path": "pyproject.toml",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "13f73c6168325c078c46503c757b97345ec40bb779cb4553f88d6e3421c1f147",
+      "bytes": 987
+    },
+    {
+      "destination": "client/src/dexe_robot_client/__init__.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/__init__.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "184d1d5f7b535dc67600dfb1c5f57fb976f3f904177c9b096e5cf0ac97887fe7",
+      "bytes": 237
+    },
+    {
+      "destination": "client/src/dexe_robot_client/common/__init__.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/common/__init__.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "125bc33b00a00d386faf0f960b4b8a846b2af94a748f7ae18e59633f0152a15f",
+      "bytes": 668
+    },
+    {
+      "destination": "client/src/dexe_robot_client/common/config.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/common/config.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "5c87530b8603a8029e7f90733da9e83e45b6a78c2fa287a729d99c026b51f5fe",
+      "bytes": 1132
+    },
+    {
+      "destination": "client/src/dexe_robot_client/common/logger.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/common/logger.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "ae5523f357aa5d3a2b4073fdcca96f5adc64a303fc3fb03817649129d6605e95",
+      "bytes": 8592
+    },
+    {
+      "destination": "client/src/dexe_robot_client/common/status.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/common/status.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "34896f314be153f8ff0f2b371c47fade5171ce313107b6924ea9e3e0146a200a",
+      "bytes": 1735
+    },
+    {
+      "destination": "client/src/dexe_robot_client/common/utils.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/common/utils.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "b4fd4929105f1a5d9cf08ed691a24f6c85ce9ab8e9187f366d42fbcf939bb7f1",
+      "bytes": 3157
+    },
+    {
+      "destination": "client/src/dexe_robot_client/end_effector_client/__init__.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/end_effector_client/__init__.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "c6fcc16683f11b969cbf41958a25ed61eb18c539e4d198504debacd1fbdbf327",
+      "bytes": 392
+    },
+    {
+      "destination": "client/src/dexe_robot_client/end_effector_client/end_effector_client.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/end_effector_client/end_effector_client.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "fc106ab157f122ff0c4548f2eb7f867f40bf4e490b5f89a72d308d19d27dfbd5",
+      "bytes": 11269
+    },
+    {
+      "destination": "client/src/dexe_robot_client/end_effector_client/end_effector_params.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/end_effector_client/end_effector_params.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "3845400e6767088b6565efe194ef04b5bf068534bd8dc0d22af7a9273ca5e5fb",
+      "bytes": 8122
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/README.md",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/README.md",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "9aafb1478a7733fd99792ecf79e7f13feebe116c2374a6b9f381881ca34aeb93",
+      "bytes": 20044
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/__init__.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/__init__.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "094e473820a4541f8b85cc79c82d6a12045d106f268bb9d1ce901cb8e66fa07f",
+      "bytes": 41
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/chassis_client.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/chassis_client.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "57dba1264987f23183b7f82e35e88746b4e29adc4e56b684de03dbb79121fdbc",
+      "bytes": 19006
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/common/__init__.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/common/__init__.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "8fef6ed80462b39d15e8fde7af7b8f6dc95bb3b7beb32d5dd244a2b67a76e191",
+      "bytes": 231
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/common/action_task_client.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/common/action_task_client.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "dea1668b8a673df3e56f3e7255e9a5c360a735ac32a0ef482a531ace74fcba20",
+      "bytes": 17945
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/common/runtime.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/common/runtime.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "96803b87c29f24aa851e141e8bc1ba4c3fb2bb9b998a28180ed6e13da852a283",
+      "bytes": 2462
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/common/service_caller.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/common/service_caller.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "108e827158e06ec51ab701ac157c835b06067d4cbe1a3650e8783628d0926e87",
+      "bytes": 1243
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/common/states.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/common/states.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "fdca8b7573f755a4d06c4e1a758b320c59ff57b7da1e4bc408e985999cf06c2f",
+      "bytes": 1407
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/common/timing.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/common/timing.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "38943545a7314a22c4dd5ca38243967fbf411c7ad3f904ac2fa366c1b5d4ae5f",
+      "bytes": 4585
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/common/validation.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/common/validation.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "f4e746f4c1a68fb7a3493a24d528500cb68d8f68032e612f29958913415e7827",
+      "bytes": 466
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/docs/README.md",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/docs/README.md",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "aca2fc74f2e851f187dabb82b1d3582b4f66fcfc55e532bef78b1c876380e55a",
+      "bytes": 4719
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/docs/api_and_usage.md",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/docs/api_and_usage.md",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "bce30d3a6591134cc4f4a796d078b93590653cbe071edc10f43e9c3d0eb68d10",
+      "bytes": 15426
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/docs/check_docs.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/docs/check_docs.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "ee9a5d4b6897c8c68f34d712824a240480ae85d59dacf824b61e75abc93561a8",
+      "bytes": 6236
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/docs/design.md",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/docs/design.md",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "478a0823b9eb780ea4d70db3a0c0ca3793270b928329f500ffe7aaa7aca8dfb0",
+      "bytes": 11711
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/docs/version_manifest.json",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/docs/version_manifest.json",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "0fd98116d2da5a5e566c47b573489f19b1fd92850aa9d5f0a2e168ed4774659b",
+      "bytes": 616
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/features/__init__.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/features/__init__.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "c500ccc0dd619aedfa9da14b211c6ca5999b52c0db3026d7f418abf9b9a6cefe",
+      "bytes": 676
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/features/auto_charging.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/features/auto_charging.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "bd7e83afb3d031e23daf6997558a2a4e1794911c05a8215decda5235db334db7",
+      "bytes": 1549
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/features/chassis_state.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/features/chassis_state.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "38c4bd9cb59d3593abc50ced3ecaa1f8b112b3b4c0e2bd0f5158752ae8fc4cb9",
+      "bytes": 4148
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/features/cloudia/__init__.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/features/cloudia/__init__.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "1157918ef7887927ad165a149a91fffb3af48b12c4df47e405c4a188d614e048",
+      "bytes": 686
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/features/cloudia/http.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/features/cloudia/http.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "31a89f801a3663d86a622696eaa0fb7aae768a0cd66243ef6030021757be7bdf",
+      "bytes": 4503
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/features/cloudia/nav_points.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/features/cloudia/nav_points.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "ecc7048a99b55579e23c851328c6e7edfd3cb8f810ff0ddf3a6623f11489f92e",
+      "bytes": 3184
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/features/cloudia/navigation.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/features/cloudia/navigation.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "b43fc069f3832cffe71a734405572925932d992b38021b90edd7cab90f973dec",
+      "bytes": 15118
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/features/cloudia/precise_control.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/features/cloudia/precise_control.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "6e2d2ca869a15d6a0656dcd487d9d76fb4f2d91d33d39055bea496e4d1baab51",
+      "bytes": 2195
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/features/cloudia/scheduler.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/features/cloudia/scheduler.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "28a9f7eb93dd2b4edce2b98a22e213acc1187a374dca37795d93b417c5b15833",
+      "bytes": 14044
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/features/cloudia/sync_roadnet.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/features/cloudia/sync_roadnet.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "4524a1d6ec3e734082b17e487bf16c90e2652139ecc5902bd6c3125f7f55d64c",
+      "bytes": 50652
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/features/graph_points_navigation.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/features/graph_points_navigation.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "dc75c9839ccb774d5adc6752cab22087cca58108aea82818001e862805390847",
+      "bytes": 2729
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/features/nav2_navigation.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/features/nav2_navigation.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "268c84540eb2b8d3dfdf83a68a19b08b87aeb678cd8cc0edbd5fee8b219335ae",
+      "bytes": 2830
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/features/nav2_params.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/features/nav2_params.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "5dc9a83b269cb7ba5b7a6ecb5e8292cba9f8231785799eca79cdc92d9ba4f8d4",
+      "bytes": 8102
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/features/nav_points.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/features/nav_points.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "4862ec104c854d08aaebcb7b4c69a1a9e38e9afaf628b6456c89526926394b6e",
+      "bytes": 1414
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/features/precise_control.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/features/precise_control.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "f35ffbe4887678da34b2c977ad75d42b90404ae9022a7b75ca38dc9447273267",
+      "bytes": 3733
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/features/road_navigation.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/features/road_navigation.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "f19c8fc624378d28fbadd004386058933711aaaf2ccf58599061d48c96e04db7",
+      "bytes": 3200
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/interface_test.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/interface_test.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "fcbd3353bfdd260ea5b91d2c009a9092f17e7a0f9b081046570f82957646f4b8",
+      "bytes": 31145
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/interfaces.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/interfaces.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "a252765947fd1c6a764bfb76890f93fa1a9fc892a7802c990aaf59327a1d7147",
+      "bytes": 5870
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/test_support/__init__.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/test_support/__init__.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "6dcef17c49cf7126478382f6c984d59d16905c88d1dc2c3f5fc5c921e7c32bcf",
+      "bytes": 74
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/test_support/mock_chassis.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/test_support/mock_chassis.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "274dbaf32673923327fe941d42cd9e103a8d3bc676c21f24d027926908b32fa7",
+      "bytes": 7685
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/test_support/mock_cloudia.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/test_support/mock_cloudia.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "695e7cf09afacda46467015afbec6bf612487411a90e88ec54f5afd76e52d00a",
+      "bytes": 7166
+    },
+    {
+      "destination": "client/src/dexe_robot_client/navigation_client/test_support/mock_cloudia_sched.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/navigation_client/test_support/mock_cloudia_sched.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "94f6dfb08f9cdde10d5bc003c962ff4e40f0381706d6378a0833746886dc41c2",
+      "bytes": 4712
+    },
+    {
+      "destination": "client/src/dexe_robot_client/robot_client/__init__.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/robot_client/__init__.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "33972817df35b9af377d296fda8f46695d09970e641a042f1b8021792d47f59f",
+      "bytes": 326
+    },
+    {
+      "destination": "client/src/dexe_robot_client/robot_client/data_structure.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/robot_client/data_structure.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "cc4a8d03ea2507d85e2be06ca59d79e798c61fddbfa60d2fb9d9208dbf438d73",
+      "bytes": 4726
+    },
+    {
+      "destination": "client/src/dexe_robot_client/robot_client/robot_client.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/robot_client/robot_client.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "d3c04797f7e7fcdb6b6ade86e496710dd8a4e997d2e2766f0bfcb8cff156ce1f",
+      "bytes": 33861
+    },
+    {
+      "destination": "client/src/dexe_robot_client/robot_client/robot_client_ros2_implement.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/robot_client/robot_client_ros2_implement.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "bdaccf8ea40aa497f59ea955b92e285b8ca63cf2438f6c18ea5377db5d852c51",
+      "bytes": 18121
+    },
+    {
+      "destination": "client/src/dexe_robot_client/w1/__init__.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/w1/__init__.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "555fac8af12d9e6f0670661653f88bb152f346b01d32a716d7b0ab89333462ea",
+      "bytes": 1448
+    },
+    {
+      "destination": "client/src/dexe_robot_client/w1/collision/coal_collision_wrapper.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/w1/collision/coal_collision_wrapper.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "1c389d2952ef7944acd742a3e4c60f2b98984b704c85479013b026fdb3135d19",
+      "bytes": 24262
+    },
+    {
+      "destination": "client/src/dexe_robot_client/w1/collision/collision_checker_wrapper.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/w1/collision/collision_checker_wrapper.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "e695e7a50c23c0e1d51589fd855a1442f84f29b457203873c225460e8cc6f616",
+      "bytes": 19360
+    },
+    {
+      "destination": "client/src/dexe_robot_client/w1/collision/generate_coal_components.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/w1/collision/generate_coal_components.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "3a0d511fd5e1a2bc31df91a89b69b7185bfef954f67a037f3125c19b16a57899",
+      "bytes": 3750
+    },
+    {
+      "destination": "client/src/dexe_robot_client/w1/kinematics/pinocchio_kinematics.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/w1/kinematics/pinocchio_kinematics.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "2a5624f69949d1972c0fb161c1308399bbbc2ae0c37c6151f8f485d03c5441b9",
+      "bytes": 30954
+    },
+    {
+      "destination": "client/src/dexe_robot_client/w1/kinematics/whole_body_ik.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/w1/kinematics/whole_body_ik.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "15c5ad1c01e2495c0917f5974136d39393a53236c686223d53bf6d3ec2e3557e",
+      "bytes": 54303
+    },
+    {
+      "destination": "client/src/dexe_robot_client/w1/kinematics/whole_body_ik_manager.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/w1/kinematics/whole_body_ik_manager.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "209433334aa73adcdb5fa58304608bb98dcc3ed11f47941f8ad09ef36e1c2eb9",
+      "bytes": 6235
+    },
+    {
+      "destination": "client/src/dexe_robot_client/w1/path_planner/blend_path.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/w1/path_planner/blend_path.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "bb2768bb3f625c2dbf564fd5c2c67f9a2933de309360504b576d80c162619096",
+      "bytes": 21126
+    },
+    {
+      "destination": "client/src/dexe_robot_client/w1/path_planner/blend_path_segment.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/w1/path_planner/blend_path_segment.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "b51f4fbe5c28a8b1b44a956b62cd15a5885d35e6e912b7656966c38e9ffb6672",
+      "bytes": 15461
+    },
+    {
+      "destination": "client/src/dexe_robot_client/w1/path_planner/cartesian_planner.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/w1/path_planner/cartesian_planner.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "f1dd746656b86520665f79a08609e5afbf571d1c988bc6839a9c5d1cd835e40c",
+      "bytes": 6772
+    },
+    {
+      "destination": "client/src/dexe_robot_client/w1/path_planner/cartesian_to_joint_planner.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/w1/path_planner/cartesian_to_joint_planner.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "a3a907687aacab50a3dea70320fa6c8d8f1809df7ae14c56908f759899bccb65",
+      "bytes": 17695
+    },
+    {
+      "destination": "client/src/dexe_robot_client/w1/trajectory_planner/toppra_trajectory_planner.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/w1/trajectory_planner/toppra_trajectory_planner.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "900631ad1d9f0ac7fc34ba742f44f2929ddd96d2e5082a13638db19026fc1795",
+      "bytes": 6717
+    },
+    {
+      "destination": "client/src/dexe_robot_client/w1/trajectory_planner/trajectory_coordination.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/w1/trajectory_planner/trajectory_coordination.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "96387c53156e86da0a371c5a68e1bf48e5444f798fd9d43b34fbf0c7fb3b0c68",
+      "bytes": 24109
+    },
+    {
+      "destination": "client/src/dexe_robot_client/w1/utils/unit_conversion.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/w1/utils/unit_conversion.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "37cbd42573da611a13737a8cce6a89347f018ab1ca7ce15b43c2f6d81fa05f51",
+      "bytes": 1012
+    },
+    {
+      "destination": "client/src/dexe_robot_client/w1/utils/w1_params.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/w1/utils/w1_params.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "c7f5c840fd8b0bd8c7bba1031b748cee5ed7a95ea1448d47d80327e3ac634f28",
+      "bytes": 17248
+    },
+    {
+      "destination": "client/src/dexe_robot_client/w1/w1_manager.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/dexe_robot_client/w1/w1_manager.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "efa8c6236921d1bce1e346c52a55c51686a6e32db1ebd7f8125664de22274409",
+      "bytes": 200013
+    },
+    {
+      "destination": "client/src/examples/collision/test_collision_checker.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/examples/collision/test_collision_checker.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "13db01e8ea7873bebf3828c1989eb2eab88d6470e876a0a0b1fdc76b67e40d69",
+      "bytes": 1599
+    },
+    {
+      "destination": "client/src/examples/kinematics/test_better_teleop_whole_body_ik.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/examples/kinematics/test_better_teleop_whole_body_ik.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "40210eab94490f61cac71fd1d7e853a3223b21d3a1e3f82663b917f7a38ea9e2",
+      "bytes": 11498
+    },
+    {
+      "destination": "client/src/examples/kinematics/test_better_whole_body_ik.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/examples/kinematics/test_better_whole_body_ik.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "fcfa05db34bccce608c707b717e9a27eb6bb3f2a759552b2eeb764101cf2ce81",
+      "bytes": 6385
+    },
+    {
+      "destination": "client/src/examples/kinematics/test_locked_arm_whole_body_ik.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/examples/kinematics/test_locked_arm_whole_body_ik.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "6399a50f53aec70165f810012e34b198078736cdb5a9b2b1df7d23504a5f32a0",
+      "bytes": 6492
+    },
+    {
+      "destination": "client/src/examples/planner/bezier_blend_path_example.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/examples/planner/bezier_blend_path_example.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "3ab3fa854aadfcbee19e7ad14687651663ddda64d594b730e26ddf336d9aaeb9",
+      "bytes": 6010
+    },
+    {
+      "destination": "client/src/examples/planner/cartesian_planner_example.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/examples/planner/cartesian_planner_example.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "b1b4a95c27ad19709ce600cc21609c9c1b6b6bdfc233f7a52f71d3fca8fb5056",
+      "bytes": 2150
+    },
+    {
+      "destination": "client/src/examples/planner/cartesian_to_joint_planner_example.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/examples/planner/cartesian_to_joint_planner_example.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "a7623c8617ea7cbc0ee25624997313b94724010a31968d6b47e5929651857eb5",
+      "bytes": 4812
+    },
+    {
+      "destination": "client/src/examples/planner/toppra_traj_planner_example.py",
+      "source": "dexe_robot_client",
+      "source_path": "src/examples/planner/toppra_traj_planner_example.py",
+      "revision": "bc2168ee3259f2ce3f4e373a1012f3b2b8a53d48",
+      "sha256": "b8d5bd9a0353dd90250d99ac326187d1c1362701c14656f48296ef0c5b384028",
+      "bytes": 2871
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/DexeRP.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/DexeRP.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "077b43c9d27302850eccdde58873e94dcbb0cda169554d30007a189dfdde7fa0",
+      "bytes": 612
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/DexeRPVersion.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/DexeRPVersion.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "ce7ed5980f0c9f302b96a7e9dd4d09ad739e637990535746d55cc1122a2b13a0",
+      "bytes": 420
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/collision/CoalCollision.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/collision/CoalCollision.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "8d27b6400c2c8a2efa8a3ff759d4f9adeeb162fa02fff48862ccb3eccd028340",
+      "bytes": 20576
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/collision/CollisionHeader.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/collision/CollisionHeader.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "8b1e40feb6084ff32c8765fdfc0d6ed0301c60b769d70373733c4c2c27009451",
+      "bytes": 357
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/collision/OctomapConverter.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/collision/OctomapConverter.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "b54679d4d8e2ef07d2edcdb735881fc48ff480ef7cd8866dd1c0907580c5676c",
+      "bytes": 11516
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/common/CommonHeader.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/common/CommonHeader.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "8f7ffe614b0947920ccaa6ea9cd8b4d35df6713cd2052317f9e23b51d79634f1",
+      "bytes": 583
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/common/Config.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/common/Config.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "d2e001058b9f5e813a5471ee252a8be91cf362d97ddeb4856d6b8db30c145286",
+      "bytes": 1079
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/common/Intervals.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/common/Intervals.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "bc623fe6963bcdc3b17255355a5a1cb269f37a62c6d32bc92c16b701392c60f6",
+      "bytes": 10750
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/common/Logger.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/common/Logger.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "72b9c45cf36e824d1b52421cbf360e05370348efe11da23ec461f4062d6d78af",
+      "bytes": 1252
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/common/Macros.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/common/Macros.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "bdc399e09756285776329ddd312fea80925e8cd87a9d4434507a7efe433aaed9",
+      "bytes": 1000
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/common/Status.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/common/Status.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "01bf98395b211d1eef0215deb103610cd217e8bd9da07dbaa628a2cd3c083f25",
+      "bytes": 2611
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/common/Timer.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/common/Timer.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "e8d912835e54019bf8b7cfeb926cf039f7b8fcd409b0e471158e3175fcb2f4f3",
+      "bytes": 4990
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/common/Types.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/common/Types.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "0a5ae3b0da479db0f27ced052075f001ab8201a8b3c7a424f946ec7e38f1b6f1",
+      "bytes": 2720
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/common/TypesFmt.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/common/TypesFmt.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "bdd02907b3aef88a2dc3cb21b7c2050a14166541d297a09d02ac8326319007a5",
+      "bytes": 2010
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/common/Utils.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/common/Utils.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "ddaebe8797e2fb2f7f10b15c4d3546ea6c5899e2e969d3d1c245d1d7a1dc6194",
+      "bytes": 8822
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/kinematics/ArmKinematicsBase.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/kinematics/ArmKinematicsBase.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "f00fb6335169d98e651f558313f495664d042b91fbf1d9113a707d1fdcb97136",
+      "bytes": 3563
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/kinematics/FEPKineParams.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/kinematics/FEPKineParams.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "306166d3bdb4ef1ae0da487f470da61264616d4ccfe061a83add3ed68ad7e54f",
+      "bytes": 9399
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/kinematics/FEPKinematics.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/kinematics/FEPKinematics.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "86995ea2b6421c41b7d64e43ac9baf475461d2849c1b8d9666099d5f673e513c",
+      "bytes": 3183
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/kinematics/KinematicsHeader.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/kinematics/KinematicsHeader.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "d09857803a8fd92c036fe8ea6ec3dfa30d8ea8b27c29c8aeb3cc7c6a4a8eff0c",
+      "bytes": 818
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/kinematics/OPWKineParams.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/kinematics/OPWKineParams.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "c79ba003214fac4f79ac80b3008cb4e48d052239a5abae5b4ac7ad303ffe3496",
+      "bytes": 7482
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/kinematics/OPWKinematics.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/kinematics/OPWKinematics.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "381e79059c53b720f634e8c5736c78bd922c16046e478149ae05f25703c9c16a",
+      "bytes": 2572
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/kinematics/PinocchioKinematics.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/kinematics/PinocchioKinematics.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "6224868636fd3a8d26a7e35a1db62f6abc7c1d367a1cc95abf7659cb0f644032",
+      "bytes": 9010
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/kinematics/SRSKineParams.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/kinematics/SRSKineParams.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "d73f9fe79adb941d854ae2f3c5fcfe9f58c5c5e22f3ed6844307d3b934fddbe5",
+      "bytes": 17771
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/kinematics/SRSKinematics.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/kinematics/SRSKinematics.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "d79a7e27ede4fc2461a2150851366b26c29d33fbfbbbaceb5c8b5180be787491",
+      "bytes": 5017
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/kinematics/Types.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/kinematics/Types.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "24e50587bb83a849362fea493667a385a8b8c74b00def500562a0e69cceea95a",
+      "bytes": 8931
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/kinematics/Utils.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/kinematics/Utils.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "c11ae82cb3482fb92b34a116a8605b2413e2cfafca68b2062f8d5b5b2ed6124b",
+      "bytes": 5078
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/lie_group/LieGroupHeader.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/lie_group/LieGroupHeader.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "4e7daf87f0d8cea12dc717f02a689b9fae93a3f75490aba7a134b4384375e116",
+      "bytes": 340
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/lie_group/Types.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/lie_group/Types.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "3dbd528a12463e1032ae3566e578162b09a15c087536e7f8daf7ce14fedee0e8",
+      "bytes": 3228
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/lie_group/Utils.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/lie_group/Utils.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "4ae950713fb7f560aefd1a9d4c336accb63798672833280feba0bfe6938914a5",
+      "bytes": 3116
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/path/BezierCurve.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/path/BezierCurve.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "65da258bd8d35397114d9f0441425f53b2caa16b7986638786d49ebaf3bce1a7",
+      "bytes": 3062
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/path/BlendPath.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/path/BlendPath.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "31c0d0e5d06eb14fa9deb1f60c99186303d0449975089a74f5016ce1a98cbedb",
+      "bytes": 1638
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/path/PathBase.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/path/PathBase.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "91a23b1b9bd313eb815f3b0839363ad9d80fb04caec55ff3a8bd2a0cdf673855",
+      "bytes": 5593
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/path/PathHeader.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/path/PathHeader.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "89d766896a437340c225e2506f96d248be499f3770fb1d1464100b40df293da5",
+      "bytes": 445
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/path/PathSegment.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/path/PathSegment.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "756de44234c21b28ba2946af2b847d412faff040841b86da7b7cbd583647768a",
+      "bytes": 3009
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/path/Types.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/path/Types.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "1152b48f15da233fb22d2ba26c1ff08117a92a5115f7e1e346b6cd24ff8bcfc1",
+      "bytes": 876
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/planner/CoalCollisionValidator.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/planner/CoalCollisionValidator.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "d35e1fdd73a71306f4e2f19df53c4b30eb0664f86da055b82a5f88edccd2ad64",
+      "bytes": 4599
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/planner/CompositeStateValidator.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/planner/CompositeStateValidator.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "fb4bfcedd1ef9a48429b177652e2b57ae9fbfdafeea05e67885f7a51c62ddf6e",
+      "bytes": 934
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/planner/OMPLPlanner.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/planner/OMPLPlanner.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "f15e90d239a9fbecb166166bfdd70e468c16bd66dc5e6ec1cb59da4643075ecc",
+      "bytes": 5315
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/planner/PinocchioStateToPose.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/planner/PinocchioStateToPose.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "f346c8278959d62a0164e905ff7862f94ba70f55350761c177de0211db81ee44",
+      "bytes": 6930
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/planner/PlannerHeader.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/planner/PlannerHeader.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "24e06af40983d8319bd9e50df299a0e78c4d8cf9da008db4ea0d834c577339f9",
+      "bytes": 553
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/planner/StateToPoseBase.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/planner/StateToPoseBase.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "5f797763e6c1ba8c6568821d68db06eeef7905b29aab9f74c724b5c3f0591c3b",
+      "bytes": 1552
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/planner/StateValidatorBase.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/planner/StateValidatorBase.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "75657f065b4c4533490ea53c34d1393be156cf84153d63d1093b8743c6a565ac",
+      "bytes": 1018
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/trajectory/DoubleSProfile.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/trajectory/DoubleSProfile.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "b0c1342ace24dd2f47417afee69576c1190b2a93b8215176ce7588a581464d5d",
+      "bytes": 1039
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/trajectory/DoubleSTrajectory.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/trajectory/DoubleSTrajectory.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "308e90daeaf0f57c92310802d09cf6a99a37c564c7a1d3b2f799a1763627864d",
+      "bytes": 3013
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/trajectory/Polynomial.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/trajectory/Polynomial.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "dd02528acee01a999de717649442c291dd586444cdf8c2366085784289b3b284",
+      "bytes": 6679
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/trajectory/TrajectoryBase.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/trajectory/TrajectoryBase.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "c48756b54a1131f3219c0f25761111453b688fea833d6b9ee1caca2698d02629",
+      "bytes": 5682
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/trajectory/TrajectoryHeader.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/trajectory/TrajectoryHeader.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "b5483b72e6e8ada25837a1ce1f7608d64b00976933f6033daa1afab657db6215",
+      "bytes": 541
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/trajectory/TrajectorySegment.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/trajectory/TrajectorySegment.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "2d2477e656d9795f38c6ebddb7ef72e0ec964a590aef97421e00e72c44f207d6",
+      "bytes": 2931
+    },
+    {
+      "destination": "server/lib/dexe_rp/dexe_rp/trajectory/Types.h",
+      "source": "dexe_robot_server",
+      "source_path": "lib/dexe_rp/dexe_rp/trajectory/Types.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "9104997cc03c3bcc782a8e3d94e3d973b30315463aeec96b49d7b63a5bf3ce12",
+      "bytes": 4937
+    },
+    {
+      "destination": "server/robot_server_lib/CMakeLists.txt",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/CMakeLists.txt",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "3287df6689f3590f578ca487d3ab97e295c56b393206c478b92944be2ebd909d",
+      "bytes": 5115
+    },
+    {
+      "destination": "server/robot_server_lib/dynamics/cartesian_impedance_controller.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/dynamics/cartesian_impedance_controller.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "f1effbebd21ba07310432fe5ea36b6c949385b7ec45bc9820f5d0c5553d5850d",
+      "bytes": 8670
+    },
+    {
+      "destination": "server/robot_server_lib/dynamics/cartesian_impedance_controller.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/dynamics/cartesian_impedance_controller.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "89b59a9ace4536dc5135d6c713ee97811f85568c0d7f2e504899944e67d58ff4",
+      "bytes": 2344
+    },
+    {
+      "destination": "server/robot_server_lib/dynamics/inverse_dynamics.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/dynamics/inverse_dynamics.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "4e3d5f6836349c8c1f0924145e7dfe811c641b82e2b1de84509c799d6bc91847",
+      "bytes": 8914
+    },
+    {
+      "destination": "server/robot_server_lib/dynamics/inverse_dynamics.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/dynamics/inverse_dynamics.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "5b8499454a1fd02bb73e6f5fc3fe223a47ff1fe780cd866fe4d73eb6b878b928",
+      "bytes": 897
+    },
+    {
+      "destination": "server/robot_server_lib/dynamics/inverse_dynamics_symbol.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/dynamics/inverse_dynamics_symbol.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "6f56be15bcb3154d84a02da89a960888e55214e97dfd372d1932a441c8cde0a4",
+      "bytes": 7443
+    },
+    {
+      "destination": "server/robot_server_lib/dynamics/inverse_dynamics_symbol_generated/w1_v02/generated_include.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/dynamics/inverse_dynamics_symbol_generated/w1_v02/generated_include.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "a9463a55adb561d469d2338d3246cf52fd3b7a71cbb5fba2da098e8fdbb54d56",
+      "bytes": 619
+    },
+    {
+      "destination": "server/robot_server_lib/dynamics/inverse_dynamics_symbol_generated/w1_v02/mass_term_func.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/dynamics/inverse_dynamics_symbol_generated/w1_v02/mass_term_func.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "b4e8ea73d71214551167cb04f74cf698230779e373237916bc24bd91c2569ba9",
+      "bytes": 477658
+    },
+    {
+      "destination": "server/robot_server_lib/dynamics/inverse_dynamics_symbol_generated/w1_v02/regression_func.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/dynamics/inverse_dynamics_symbol_generated/w1_v02/regression_func.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "ba9a723247fc38108be2e094a528f7c803187033d5991851554e7f6ad5461b5c",
+      "bytes": 3893189
+    },
+    {
+      "destination": "server/robot_server_lib/dynamics/inverse_dynamics_symbol_generated/w1_v03/generated_include.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/dynamics/inverse_dynamics_symbol_generated/w1_v03/generated_include.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "eee67d5531b5fed7224264ed5ae26ff2d157e28af104568df5a52a0b4932da9a",
+      "bytes": 619
+    },
+    {
+      "destination": "server/robot_server_lib/dynamics/inverse_dynamics_symbol_generated/w1_v03/mass_term_func.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/dynamics/inverse_dynamics_symbol_generated/w1_v03/mass_term_func.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "1355e12ed8080169e7af496b89579f795cf3a61ccd71bef0a6c02e81e775c09e",
+      "bytes": 1027871
+    },
+    {
+      "destination": "server/robot_server_lib/dynamics/inverse_dynamics_symbol_generated/w1_v03/regression_func.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/dynamics/inverse_dynamics_symbol_generated/w1_v03/regression_func.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "ffa034204a2701d8f7556010aebfa817e2003d9e3456a0c0f48b9f7f1a6c2084",
+      "bytes": 7423253
+    },
+    {
+      "destination": "server/robot_server_lib/dynamics/joint_admittance_controller.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/dynamics/joint_admittance_controller.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "399459d1097c49d47a25b42d450bb69bada5483ba172c06ff57e6e520ac0e684",
+      "bytes": 4828
+    },
+    {
+      "destination": "server/robot_server_lib/dynamics/joint_admittance_controller.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/dynamics/joint_admittance_controller.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "b070297eb800f20ba489e91772a49165d1492ef954551171a244cdb53ef20999",
+      "bytes": 2233
+    },
+    {
+      "destination": "server/robot_server_lib/dynamics/joint_pd_controller.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/dynamics/joint_pd_controller.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "3b40927b46ddff59597b0f0ad7b996c95effe39eb9f77fb31abe1556986c4ebd",
+      "bytes": 1498
+    },
+    {
+      "destination": "server/robot_server_lib/dynamics/joint_pd_controller.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/dynamics/joint_pd_controller.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "3ec01dc12d5f78d0898dc3eacdce5dd1c0dc913ca79b52067c14f20ea8291e01",
+      "bytes": 1020
+    },
+    {
+      "destination": "server/robot_server_lib/dynamics/tool_compensation.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/dynamics/tool_compensation.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "6c6552a4c7b442ed70aea59890b9f7357efb8a49ef91cf798d6b50d5b37600ed",
+      "bytes": 3721
+    },
+    {
+      "destination": "server/robot_server_lib/dynamics/tool_compensation.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/dynamics/tool_compensation.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "0eac40f4c2a2e8221b86deb9d6c50fe3a8fe13001f6f8fa73b0ace9619e0cfd9",
+      "bytes": 1317
+    },
+    {
+      "destination": "server/robot_server_lib/include/pinocchio_api.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/include/pinocchio_api.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "a8032ab537f201cc6a1ab64af86d302165dc78f92e90f0027255f38a5ced19a1",
+      "bytes": 2029
+    },
+    {
+      "destination": "server/robot_server_lib/include/planner_manager.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/include/planner_manager.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "d20fb1ad7841a3817b8bffe3ce321dc8ff085e939591bbfd969a4e6555bcb177",
+      "bytes": 3465
+    },
+    {
+      "destination": "server/robot_server_lib/include/robot_server_base.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/include/robot_server_base.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "fc20baf436587007e18ba0f3e0123cefb398c052c384b4f817d0c19a47d0ae2e",
+      "bytes": 4768
+    },
+    {
+      "destination": "server/robot_server_lib/include/torque_controller_manager.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/include/torque_controller_manager.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "85858233c4f573ab8ba0deb31f7f39c5bf045c7e69eea43106ad61b2fbb64b02",
+      "bytes": 1996
+    },
+    {
+      "destination": "server/robot_server_lib/kinematics/kinematics_base.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/kinematics/kinematics_base.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "9e93ae662875f30815f20daacefb96b2919a54d768af853d27fbcb5144d2055d",
+      "bytes": 853
+    },
+    {
+      "destination": "server/robot_server_lib/kinematics/kinematics_fep.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/kinematics/kinematics_fep.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "3021ce8bbd8ed9cb7acb9381344f14258ee1fd6f44bb189edff584c5739d2d4d",
+      "bytes": 4239
+    },
+    {
+      "destination": "server/robot_server_lib/kinematics/kinematics_fep.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/kinematics/kinematics_fep.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "1e1576dabc6c81fff6400f860ea28095e58b16fcf573a13ff284c0ce5429bb59",
+      "bytes": 873
+    },
+    {
+      "destination": "server/robot_server_lib/kinematics/kinematics_include.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/kinematics/kinematics_include.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "a4ae3513e2ce3c198fc7e1207ba1fffbdac74b235bc4af72b202965158944480",
+      "bytes": 133
+    },
+    {
+      "destination": "server/robot_server_lib/kinematics/kinematics_numerical.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/kinematics/kinematics_numerical.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "c92020bbd1ec0f4098a68a5e0ab85bda2a09db679b41d75da20b4a6db6805d02",
+      "bytes": 2564
+    },
+    {
+      "destination": "server/robot_server_lib/kinematics/kinematics_numerical.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/kinematics/kinematics_numerical.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "0407d75c09ca4f0e208d5459fc7b710e21cd422d1fe8c9e3f36db1d88b750921",
+      "bytes": 898
+    },
+    {
+      "destination": "server/robot_server_lib/kinematics/kinematics_srs.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/kinematics/kinematics_srs.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "e4b76065910f7d027b7a9239967d632a9c00fabdf44f3f968d6ae5a05a4e7ad0",
+      "bytes": 4953
+    },
+    {
+      "destination": "server/robot_server_lib/kinematics/kinematics_srs.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/kinematics/kinematics_srs.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "7587383abe60bb4e86f2fcea897b4a4b62420cfb14d5c39c8434eacca399c6fe",
+      "bytes": 933
+    },
+    {
+      "destination": "server/robot_server_lib/kinematics/kinematics_torso.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/kinematics/kinematics_torso.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "43a79cf13763d9c060027b57cc27c39bcd17d847d9167205d2c6bdd697f8d714",
+      "bytes": 3529
+    },
+    {
+      "destination": "server/robot_server_lib/kinematics/kinematics_torso.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/kinematics/kinematics_torso.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "373c004fa5b747e2b5c2a1ef7eed44a7a2432ce6acf1747b8501acd065f6d17a",
+      "bytes": 1499
+    },
+    {
+      "destination": "server/robot_server_lib/motion_planner/ee_pose_streaming_planner.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/motion_planner/ee_pose_streaming_planner.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "c2be951617afc813c8dc137ee79af3eb971bdb99b3f8e94526da60aa216c7878",
+      "bytes": 9496
+    },
+    {
+      "destination": "server/robot_server_lib/motion_planner/ee_pose_streaming_planner.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/motion_planner/ee_pose_streaming_planner.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "97c2c314ac68e7b2c769fe11268cdbbef018a631b36f30b9481737421e084512",
+      "bytes": 1479
+    },
+    {
+      "destination": "server/robot_server_lib/motion_planner/ee_velocity_streaming_planner.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/motion_planner/ee_velocity_streaming_planner.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "000f0d7205be38b2187c7a8bd1bd9a2f04e771c4592e5e8b69ace82a8d5b4f19",
+      "bytes": 13504
+    },
+    {
+      "destination": "server/robot_server_lib/motion_planner/ee_velocity_streaming_planner.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/motion_planner/ee_velocity_streaming_planner.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "87d6e6024a3b51aff0985150433ff3e541421546faef4911b04f9ae7d8724e56",
+      "bytes": 1628
+    },
+    {
+      "destination": "server/robot_server_lib/motion_planner/idle_planner.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/motion_planner/idle_planner.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "1ec6d8fd01afd604f04bd9f8af24cbfe4b05a7480e0a78704ffe3912b7211593",
+      "bytes": 2118
+    },
+    {
+      "destination": "server/robot_server_lib/motion_planner/idle_planner.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/motion_planner/idle_planner.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "fccb18f2ae1d6bc888a73e6fcb2700c7e9f543f95339b6a83e19cc96cb1ac45f",
+      "bytes": 942
+    },
+    {
+      "destination": "server/robot_server_lib/motion_planner/joint_streaming_planner.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/motion_planner/joint_streaming_planner.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "5e221c201bf4d1edc804bc00375f30e3ce0390b8bd19c6622ed9c1434de65b4f",
+      "bytes": 15239
+    },
+    {
+      "destination": "server/robot_server_lib/motion_planner/joint_streaming_planner.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/motion_planner/joint_streaming_planner.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "d498c19bcad3031a43a690b94be3c6c07ce90efe42a2d8cd9bfb8a3057607872",
+      "bytes": 1919
+    },
+    {
+      "destination": "server/robot_server_lib/motion_planner/motion_planner_include.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/motion_planner/motion_planner_include.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "29a1e86b0aabc48f01615f3d872c1409cfc9a448451122d0f4350a03bc0091a6",
+      "bytes": 252
+    },
+    {
+      "destination": "server/robot_server_lib/motion_planner/move_joint_planner.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/motion_planner/move_joint_planner.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "c0b748c764d025e5b390efe68c4571ebfcedad7c08096cabdca3427fc804ef70",
+      "bytes": 5127
+    },
+    {
+      "destination": "server/robot_server_lib/motion_planner/move_joint_planner.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/motion_planner/move_joint_planner.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "73f4001d7ebae02bc14ef1999346d4550e190009f453d8c0b6b6d1f4b0e56af7",
+      "bytes": 966
+    },
+    {
+      "destination": "server/robot_server_lib/motion_planner/move_line_planner.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/motion_planner/move_line_planner.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "d92dfb7ae8221ad5a8709cc7a91dea1de275d230f74b51ca79c005da059e2f4a",
+      "bytes": 17076
+    },
+    {
+      "destination": "server/robot_server_lib/motion_planner/move_line_planner.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/motion_planner/move_line_planner.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "71a5f567a5fdec1f1927c78818bbe6f03ac16e2f48be753ae5930d10799a34a1",
+      "bytes": 1756
+    },
+    {
+      "destination": "server/robot_server_lib/motion_planner/move_planner_base.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/motion_planner/move_planner_base.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "1e6a7056b5577073298a78f2fb0563dd8745ebdc796243d4fdb9c9f3e90b87d0",
+      "bytes": 3893
+    },
+    {
+      "destination": "server/robot_server_lib/motion_planner/move_planner_base.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/motion_planner/move_planner_base.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "adab1f5cca41d7c20e4238bfeb28dc26a953be69705d70d8d352b923d699fea0",
+      "bytes": 3676
+    },
+    {
+      "destination": "server/robot_server_lib/motion_planner/move_traj_planner.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/motion_planner/move_traj_planner.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "06fddbeee71a426e7249b4ccb5f597736b79ddb7fec2756c1d600c0c111054a4",
+      "bytes": 9236
+    },
+    {
+      "destination": "server/robot_server_lib/motion_planner/move_traj_planner.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/motion_planner/move_traj_planner.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "0d5a4986d2524a3e036f29995a5054172bd3099249aea5fa17c90d603b28eb61",
+      "bytes": 1805
+    },
+    {
+      "destination": "server/robot_server_lib/package.xml",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/package.xml",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "79987b8c6cd191cef8fa92decec62c1e7893b77a3c09dd71cb67f0d73430f3b7",
+      "bytes": 594
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/chassis.urdf",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/chassis.urdf",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "4a70a379ce3ed95655972717f1a9449a358fa916d632b56512ed1ffc2fa3da31",
+      "bytes": 2961
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/chassis/base_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/chassis/base_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "e6bbadd85bb0194c669200d699177c71ddbe4e6949b959a679f25e9a6ca6dc2f",
+      "bytes": 15810
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/head/head1.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/head/head1.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "eae4d3a841dc7c8e606972c254609f0b85793b1b96c658db677b511a3ea63675",
+      "bytes": 7528
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/head/head2.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/head/head2.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "c6732c2563e99622e1884d54ead17cbbfd64efe1f1c802ab001ff0792ee8d2ff",
+      "bytes": 7689
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/head/head_pitch_j2_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/head/head_pitch_j2_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "f4fea8be793f1d816b8ed892de7903200eb69eb9ebffa17814e439d30a805288",
+      "bytes": 6151
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/head/head_yaw_j1_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/head/head_yaw_j1_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "20d6803ee6e8df23c1cff298c761d3c7da4ec03de3721ba14a4087b663c7139b",
+      "bytes": 3036
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/left_arm/arml1.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/left_arm/arml1.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "75722a15fd234b6ec0d29bd9652d483e6c4d11f8aabf22c762e702afced7397d",
+      "bytes": 7593
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/left_arm/arml2.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/left_arm/arml2.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "4097229049b11a72baae26eba070a159e6070f3c807aad3d7534ceecd6c9a710",
+      "bytes": 19068
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/left_arm/arml3.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/left_arm/arml3.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "76844eacf7bd620df4d44e337a03bb5c042d59b4bcd22e8f38bd0fe8aa8b3c76",
+      "bytes": 17469
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/left_arm/arml4.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/left_arm/arml4.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "695f61ff4bc44a4dbd18023e622be13882c688f52ed6ab968f08a83abf22fc4f",
+      "bytes": 7625
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/left_arm/arml5.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/left_arm/arml5.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "585bc3621995a8b06627b0d2c23db226efc6e96117bcfd82e36576775aad61b6",
+      "bytes": 65002
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/left_arm/arml6.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/left_arm/arml6.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "dffcbe6d21fcbf873c10f4467640559125aeca3d53e9f16aa77e33e3f3de30b5",
+      "bytes": 16563
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/left_arm/arml7.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/left_arm/arml7.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "968eff897218b9ca5c5999a54f812882fdd0d523ac8e4ae77506e196c01ba0c8",
+      "bytes": 32414
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/left_arm/elbow_pitch_l_j3_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/left_arm/elbow_pitch_l_j3_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "2753901ed95de4381a89edeacef3e0be87c500531c66ac818b6e9e59d92c5f81",
+      "bytes": 23617
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/left_arm/elbow_yaw_l_j4_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/left_arm/elbow_yaw_l_j4_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "d245168a9c99b8b0abf6a21d8780b5b09f27cd9b869335f3d345da76da26995a",
+      "bytes": 25863
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/left_arm/shoulder_pitch_l_j1_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/left_arm/shoulder_pitch_l_j1_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "ae03647240ba9c6f1932b9762b6a0e8b91c78f1f227b01a555bcc8d5e07d3a7e",
+      "bytes": 25535
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/left_arm/shoulder_roll_l_j2_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/left_arm/shoulder_roll_l_j2_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "cdfc727d1f79947f97efd25c9eecde952e4fd3dd1758a4f5985063ef8296dc90",
+      "bytes": 23356
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/left_arm/wrist_pitch_l_j5_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/left_arm/wrist_pitch_l_j5_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "9643d88323158f89422781e9807663ddcd6c90a1311270654390d70919f56873",
+      "bytes": 21697
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/left_arm/wrist_roll_l_j7_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/left_arm/wrist_roll_l_j7_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "2bc7f492750b6be622ee8c001fdebcdf4aa1187fa849c700e7f83d27de9f364e",
+      "bytes": 22830
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/left_arm/wrist_yaw_l_j6_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/left_arm/wrist_yaw_l_j6_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "bf31365171a1e6910bcf196ae5b5e333278e8cb078e541b8f7855589e826b515",
+      "bytes": 29078
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/right_arm/armr1.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/right_arm/armr1.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "6b27f795a3b82c5c5e3ca89385030f32f4fb304bf88030ac16be246aa611556d",
+      "bytes": 7592
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/right_arm/armr2.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/right_arm/armr2.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "4097229049b11a72baae26eba070a159e6070f3c807aad3d7534ceecd6c9a710",
+      "bytes": 19068
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/right_arm/armr3.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/right_arm/armr3.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "867038d26e9b4f14561f3b8fdb27cdc65eb6864ca51620548133d7412f472a96",
+      "bytes": 16779
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/right_arm/armr4.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/right_arm/armr4.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "b013c545b20930864deb2b654bbe73aad59dc9bda8d7bc56ac7a306cd40cc680",
+      "bytes": 7651
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/right_arm/armr5.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/right_arm/armr5.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "a465d8d1841ab9f83970758459e4d2385f41262fc2eb3023d0571405df5a0bf7",
+      "bytes": 95997
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/right_arm/armr6.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/right_arm/armr6.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "87256b89c01d9d79ef54c93aa2b1231c2e394efd06657b9da131b8e3634b0d5d",
+      "bytes": 16689
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/right_arm/armr7.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/right_arm/armr7.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "968eff897218b9ca5c5999a54f812882fdd0d523ac8e4ae77506e196c01ba0c8",
+      "bytes": 32414
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/right_arm/elbow_pitch_r_j3_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/right_arm/elbow_pitch_r_j3_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "9957ffb1360e61902c81c1920eae496cf5b8385608d669f0ab7395c679051515",
+      "bytes": 26054
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/right_arm/elbow_yaw_r_j4_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/right_arm/elbow_yaw_r_j4_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "0b3c6f1deb425bb836278aad1af2663c0810b4885517bd6f96e545ab49b28cd5",
+      "bytes": 25950
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/right_arm/shoulder_pitch_r_j1_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/right_arm/shoulder_pitch_r_j1_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "6f7f7f280c3354860559dc5ae6907ed2f802dd7885613aa89e6209c1200c5969",
+      "bytes": 22215
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/right_arm/shoulder_roll_r_j2_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/right_arm/shoulder_roll_r_j2_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "44c3b1d3c76f80cf94b2c7d483e556bfdcd1936e6b8e98825959c64e76292c40",
+      "bytes": 23767
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/right_arm/wrist_pitch_r_j5_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/right_arm/wrist_pitch_r_j5_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "79d27c3fcbbeb3355a12855211c124e91d355bd63c8491979149372cef374e91",
+      "bytes": 22931
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/right_arm/wrist_roll_r_j7_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/right_arm/wrist_roll_r_j7_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "4a0ef1826fc4e42c8fa5eef8f2786ae409e6e66feb86409a0ae52bd3f335a54f",
+      "bytes": 28754
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/right_arm/wrist_yaw_r_j6_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/right_arm/wrist_yaw_r_j6_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "004755e56987a0aa2a351d3b8aac891dacc2ba6dc1fea762c1f2108e10d91637",
+      "bytes": 26971
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/torso/ankle_pitch_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/torso/ankle_pitch_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "9431c7ea8dbea960060da7a6aacbba247a1a972380cc773a62172d99663a15af",
+      "bytes": 4593
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/torso/buttock_pitch_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/torso/buttock_pitch_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "015274a173474a55a984cad6c5b2270e68ea13543154c5b4d33afb5be67c4057",
+      "bytes": 3034
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/torso/knee_pitch_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/torso/knee_pitch_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "bb771afac835bbd6eeabc663f4fd8d462c634b2ba55ee32ace8be981aa919317",
+      "bytes": 8341
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/torso/torso1.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/torso/torso1.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "f502c69aa3c84f609a2235c1a1897f6a6e785585c534416f054a796acc0713ec",
+      "bytes": 15920
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/torso/torso2.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/torso/torso2.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "bb10061453ad70cd491248a74f4db4d1c63daf94caecc00c8417471b898881da",
+      "bytes": 7643
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/torso/torso3.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/torso/torso3.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "54cf6ff4f926c43e9c21a0fc932165611275037b92d3176453f4841a77a7fd93",
+      "bytes": 7638
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/torso/torso4.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/torso/torso4.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "f211a41adbcd3624b84354ca912d984f2c107c808ae2c6bb3234f65c5c4dabef",
+      "bytes": 24051
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/collision/torso/waist_yaw_link.obj",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/collision/torso/waist_yaw_link.obj",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "3b8775b1501472b831c9d2c71d1c71a6c6141fc461471417067190e0e44886ed",
+      "bytes": 19106
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/head.urdf",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/head.urdf",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "681b8182c41679f0902555d0d35dfb2d33f5356724e8722c54f51bb97c31a757",
+      "bytes": 3732
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/left_arm.urdf",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/left_arm.urdf",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "dd4d599cde9e3aee67503d80869dffd20b15ea45ee0a81b1168b48eb0fbaa5e4",
+      "bytes": 9665
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/right_arm.urdf",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/right_arm.urdf",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "35daea242562df5e9e699c2f443d9bda12b6d949180189f66229bad152ab7ec9",
+      "bytes": 9702
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/robot.urdf",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/robot.urdf",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "74ccd5473d1db8e53c8a4fce126603baad776a9796830ec628a6025d5e7b5520",
+      "bytes": 29427
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/robot_with_ee.urdf",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/robot_with_ee.urdf",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "2572e895b8addf63ba1682a13f7d1feebbeffb6e066173666fd1513916461b75",
+      "bytes": 29435
+    },
+    {
+      "destination": "server/robot_server_lib/robot_models/w1/torso.urdf",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/robot_models/w1/torso.urdf",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "35bbfb0c7c8e6f2f3a262c14f31c414dc40707beb1afde011172c4aee24d226e",
+      "bytes": 5395
+    },
+    {
+      "destination": "server/robot_server_lib/src/pinocchio_api.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/src/pinocchio_api.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "7dcfff8bad0069cdf49c6bf1b7dbc6c99c82de17e4be19d1cdc3a11644a1416e",
+      "bytes": 7618
+    },
+    {
+      "destination": "server/robot_server_lib/src/planner_manager.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/src/planner_manager.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "171a0801c10137cf8cd6bbf1bb060ffa309d2956e8e0c58425ba78121785528f",
+      "bytes": 57181
+    },
+    {
+      "destination": "server/robot_server_lib/src/robot_server_base.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/src/robot_server_base.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "2c055e3bc926b774059b13010a5f887bae487b9ba5f7a7747a85903d332c6776",
+      "bytes": 26650
+    },
+    {
+      "destination": "server/robot_server_lib/src/torque_controller_manager.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/src/torque_controller_manager.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "d653e708e3d2b0352a48272c1f6bfa76764460e02b19f5763a3dcc0ab5446ec9",
+      "bytes": 9607
+    },
+    {
+      "destination": "server/robot_server_lib/test/test_butterworth_filter.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/test/test_butterworth_filter.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "840abf146e129a931fdf875a156719d8735c6e989ccb889d7dfd5b7b7ee0d23f",
+      "bytes": 6429
+    },
+    {
+      "destination": "server/robot_server_lib/test/test_cartesian_impedance_controller.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/test/test_cartesian_impedance_controller.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "684f222d4cde400c452f4e9774aa8043ea70adc9bbaf21ea07783f1f147755ee",
+      "bytes": 1793
+    },
+    {
+      "destination": "server/robot_server_lib/test/test_ei_input_shaper.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/test/test_ei_input_shaper.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "9bb660bc4a78c78958685c9d476534c6f77640018a0691db8988ef0afbccca3b",
+      "bytes": 6663
+    },
+    {
+      "destination": "server/robot_server_lib/test/test_invdyn_symbol.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/test/test_invdyn_symbol.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "403655dc3a529bd16e2a202ece58e9532eec0f5184a5929f0b4134ed09bc8bd3",
+      "bytes": 4552
+    },
+    {
+      "destination": "server/robot_server_lib/test/test_inverse_dynamik.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/test/test_inverse_dynamik.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "ff20e44cbcf23300476e9eab89f2dca6c69a6cb9caf06ace116ce7080c363bdc",
+      "bytes": 1372
+    },
+    {
+      "destination": "server/robot_server_lib/test/test_joint_admittance_controller.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/test/test_joint_admittance_controller.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "8d1de1f3d6daa8d2de86403258ce41f0add01012fc77260595053de8f9312c73",
+      "bytes": 6407
+    },
+    {
+      "destination": "server/robot_server_lib/test/test_joint_mapping.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/test/test_joint_mapping.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "4e8e772ef9c46b9c3e2d8acaec0f03434fba0a77cf875290341f3eace545953b",
+      "bytes": 22296
+    },
+    {
+      "destination": "server/robot_server_lib/test/test_kinematics.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/test/test_kinematics.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "9bd4bae35abb32c7f227f9eaef130f54d3701b637b5163de2c9d890e0da9524a",
+      "bytes": 6452
+    },
+    {
+      "destination": "server/robot_server_lib/test/test_move_robot.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/test/test_move_robot.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "d3bcc24c3ab59257ca05ddd81eeb32da1ed996af9520569d2578117f1be85a4e",
+      "bytes": 3033
+    },
+    {
+      "destination": "server/robot_server_lib/test/test_pinocchio.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/test/test_pinocchio.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "396acd65f26e2379e9da0a6da3ebdc94b458fd0e3e5d91d220571448b7ecd5cc",
+      "bytes": 3567
+    },
+    {
+      "destination": "server/robot_server_lib/test/test_sri_force_sensor.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/test/test_sri_force_sensor.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "ef48e5441bf08484666340acb2ee60982a53a1e42fb25048177576dbdfd65736",
+      "bytes": 2169
+    },
+    {
+      "destination": "server/robot_server_lib/test/test_tool_compensation_math.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/test/test_tool_compensation_math.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "fcab8a7117f764f231527642b58bd118d351837d0d477644eaefae6971c936ba",
+      "bytes": 6603
+    },
+    {
+      "destination": "server/robot_server_lib/test/test_urdf_model.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/test/test_urdf_model.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "b8bafcff96b8087b089d7148e769fdfbea3c5b1a189b3a3431cf973b0c22371c",
+      "bytes": 7205
+    },
+    {
+      "destination": "server/robot_server_lib/torque_controller/torque_controller_base.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/torque_controller/torque_controller_base.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "5f4473db20684d9597da4630113825cb02778cce030b73bebb7a3eee85a6eefc",
+      "bytes": 267
+    },
+    {
+      "destination": "server/robot_server_lib/torque_controller/torque_controller_base.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/torque_controller/torque_controller_base.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "8cf3087f9c5bb4d5d815a08dbad7d310c250ff1e8bdab23c6607e3b22c8a3897",
+      "bytes": 741
+    },
+    {
+      "destination": "server/robot_server_lib/torque_controller/torque_controller_include.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/torque_controller/torque_controller_include.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "f822016d5f360c2ebcaa2ee78310114c2693542b668f03047c784c0228026489",
+      "bytes": 60
+    },
+    {
+      "destination": "server/robot_server_lib/torque_controller/torque_controller_inverse_dynamic.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/torque_controller/torque_controller_inverse_dynamic.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "36d090d2a3700f5ad000895fce3c808fc19d958493e8b208a945364eea91ea8c",
+      "bytes": 5371
+    },
+    {
+      "destination": "server/robot_server_lib/torque_controller/torque_controller_inverse_dynamic.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/torque_controller/torque_controller_inverse_dynamic.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "faccbd43e7a99508a3908f29a8b0a28cbc69df993cbd80f0e7693b3039157b75",
+      "bytes": 1159
+    },
+    {
+      "destination": "server/robot_server_lib/utils/CMakeLists.txt",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/CMakeLists.txt",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "4b2a5129efc37ebd8a794559aa0e7c9679ff916843a09452e81e26fe63b4c081",
+      "bytes": 1435
+    },
+    {
+      "destination": "server/robot_server_lib/utils/NanoLog.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/NanoLog.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "48838b17bda6b7cad656bf48ce78436f395aec5be2125da636dc88695fe01dab",
+      "bytes": 24734
+    },
+    {
+      "destination": "server/robot_server_lib/utils/NanoLog.hpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/NanoLog.hpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "9063d68023b830d6b6fbc093908cf76700a8a760ddeea345d1397431430a439b",
+      "bytes": 11604
+    },
+    {
+      "destination": "server/robot_server_lib/utils/bounded_queue.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/bounded_queue.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "a234f7ee25518f35d8969120d9b47f84be66101fdacf4cebe60438fe559115ce",
+      "bytes": 5466
+    },
+    {
+      "destination": "server/robot_server_lib/utils/butterworth_filter.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/butterworth_filter.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "31dc9019e9cc774b8feeaf9813e6dadc55e3ae4e4662077b28598aa859ada450",
+      "bytes": 2029
+    },
+    {
+      "destination": "server/robot_server_lib/utils/butterworth_filter.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/butterworth_filter.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "4c3ace1458f055ebf5365abebed10123dee1daf3358a547fb04531815f00b586",
+      "bytes": 684
+    },
+    {
+      "destination": "server/robot_server_lib/utils/chassis_type.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/chassis_type.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "9b1aa34f91df545c65ea4eb902eaf288380cd7eb8dc735ea9afeecdadc626426",
+      "bytes": 1278
+    },
+    {
+      "destination": "server/robot_server_lib/utils/data_structure.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/data_structure.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "b6fd782381a75ab3ed345970c75bfbad05b28f80b5c73f8ed454ce0eaacfd95e",
+      "bytes": 13966
+    },
+    {
+      "destination": "server/robot_server_lib/utils/ei_input_shaper.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/ei_input_shaper.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "055aaa0ef68ce00ad1587ac32849b21ceb093380b13bc1239e7d6b66d2c82e9d",
+      "bytes": 6456
+    },
+    {
+      "destination": "server/robot_server_lib/utils/ei_input_shaper.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/ei_input_shaper.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "4c0d4c6a64517aa105da45cc4fcc6ac8343bf6ad7ea2d4b3ac34c55aef841371",
+      "bytes": 1719
+    },
+    {
+      "destination": "server/robot_server_lib/utils/encoding.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/encoding.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "59c8f3881e514fcb8a066092bb0026f610126803e4b5f7229114d4932b0d4852",
+      "bytes": 895
+    },
+    {
+      "destination": "server/robot_server_lib/utils/encoding.hpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/encoding.hpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "e308b6e35f9c3a1674d5944ac6ea3939fdec542753a9cd0de08b169f4702db64",
+      "bytes": 479
+    },
+    {
+      "destination": "server/robot_server_lib/utils/force_sensor_reader.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/force_sensor_reader.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "92a235bf4475375ee9d9560c62af2def0e8fcdcd7a870670eda61b3633f47f89",
+      "bytes": 8277
+    },
+    {
+      "destination": "server/robot_server_lib/utils/message_buffer_map.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/message_buffer_map.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "3aec3f5c1466da280c087257625c0f700eb38924243ef5280fb011aa82fee557",
+      "bytes": 3942
+    },
+    {
+      "destination": "server/robot_server_lib/utils/safety_check.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/safety_check.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "ff627703448eb553cd1d36686a60927e75254eb6f5986bb0587564edb4d3d8fe",
+      "bytes": 6846
+    },
+    {
+      "destination": "server/robot_server_lib/utils/safety_check.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/safety_check.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "ccde04bb2f7257cb007f487c2b875d89164f5797de2ad69e4c8451854c87e042",
+      "bytes": 1387
+    },
+    {
+      "destination": "server/robot_server_lib/utils/single_rw_latest_queue.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/single_rw_latest_queue.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "133c7a24cfcf35dabc23a107af6a24f10b4316d51af8d5d5640d39690c97ddab",
+      "bytes": 13056
+    },
+    {
+      "destination": "server/robot_server_lib/utils/sri_force_sensor.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/sri_force_sensor.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "e358457227d5d7f2c109616cdc87b4678349f1f6460a3d2abcaf97d4cc2e28ec",
+      "bytes": 11828
+    },
+    {
+      "destination": "server/robot_server_lib/utils/sri_force_sensor.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/sri_force_sensor.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "cb2a2659c7a27c41461d7defc4ee223cce017765a8a04099cef92e6a33ddee99",
+      "bytes": 3030
+    },
+    {
+      "destination": "server/robot_server_lib/utils/time_utility.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/time_utility.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "75325694ed96b5efb7ebf298af3255e446aa54c29f9ed55c33b892b0e6b8d7a7",
+      "bytes": 2244
+    },
+    {
+      "destination": "server/robot_server_lib/utils/typedef.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/typedef.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "3aa25af230f14879609d380e574f81e0c3e9a46aa66788d756e6277fef57228f",
+      "bytes": 3544
+    },
+    {
+      "destination": "server/robot_server_lib/utils/utils.cpp",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/utils.cpp",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "908794bdc1a1c1fe7faacf0d115506c52e505583fc646a28ff1781d5778db11f",
+      "bytes": 48969
+    },
+    {
+      "destination": "server/robot_server_lib/utils/utils.h",
+      "source": "dexe_robot_server",
+      "source_path": "robot_server_lib/utils/utils.h",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "df65629a7f9a0b2ee10755d33494ac72de4b3975c9a48589ddb27d723df75da9",
+      "bytes": 7242
+    },
+    {
+      "destination": "server/script/dyn_params_ident/README.md",
+      "source": "dexe_robot_server",
+      "source_path": "script/dyn_params_ident/README.md",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "a636d0090e8d4716196c5cc4d3b0237d9112248ce76d580e46b039ace46e1939",
+      "bytes": 923
+    },
+    {
+      "destination": "server/script/dyn_params_ident/compare_dh.py",
+      "source": "dexe_robot_server",
+      "source_path": "script/dyn_params_ident/compare_dh.py",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "d386f90316beca93d66f94e07db93b00ce5f1f057dbd375afa7bbc355a794a87",
+      "bytes": 2121
+    },
+    {
+      "destination": "server/script/dyn_params_ident/dyn_code_generator.py",
+      "source": "dexe_robot_server",
+      "source_path": "script/dyn_params_ident/dyn_code_generator.py",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "2e9adcff9bf2e6f8c42a57bce8d54771fb4a0ca725405c47359e370297f84f5e",
+      "bytes": 14441
+    },
+    {
+      "destination": "server/script/dyn_params_ident/traj_generator.py",
+      "source": "dexe_robot_server",
+      "source_path": "script/dyn_params_ident/traj_generator.py",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "53abf8511783d87b3b8301f5d98c2a996997af698bf3fa4b0f11f4deb3cd3d37",
+      "bytes": 17364
+    },
+    {
+      "destination": "server/script/dyn_params_ident/urdf2dh.py",
+      "source": "dexe_robot_server",
+      "source_path": "script/dyn_params_ident/urdf2dh.py",
+      "revision": "140d57be1ab779bb1dd905ebc63f7c7f9c1bcade",
+      "sha256": "aa1dbea9c702668e5c0286e2cb16ac4b8e90f48b918f9579376651cce3893e5b",
+      "bytes": 16076
+    },
+    {
+      "destination": "sdk_python_excerpt/dexe_rp/__init__.py",
+      "source": "dexe_rp_installed_python",
+      "source_path": "dexe_rp/__init__.py",
+      "revision": "0.4.2",
+      "sha256": "8ce1c4d3c9487b5d20a2fa75fd320d6f1c1a8a0de14af2b483dd72b19dd1ee8e",
+      "bytes": 1992
+    },
+    {
+      "destination": "sdk_python_excerpt/dexe_rp/kinematics/single_arm_025f_num_kine.py",
+      "source": "dexe_rp_installed_python",
+      "source_path": "dexe_rp/kinematics/single_arm_025f_num_kine.py",
+      "revision": "0.4.2",
+      "sha256": "44c837074fc21db79d324c6b4296346a6811b9c91836de797821f96f4a9033ac",
+      "bytes": 13209
+    },
+    {
+      "destination": "sdk_python_excerpt/dexe_rp/kinematics/torso_kinematics.py",
+      "source": "dexe_rp_installed_python",
+      "source_path": "dexe_rp/kinematics/torso_kinematics.py",
+      "revision": "0.4.2",
+      "sha256": "fd0988a82fd00caa47e59a46cdac4a9a8f321c6cec57cec5769e115252cdccfa",
+      "bytes": 14210
+    },
+    {
+      "destination": "sdk_python_excerpt/dexe_rp/kinematics/w1_kinematics.py",
+      "source": "dexe_rp_installed_python",
+      "source_path": "dexe_rp/kinematics/w1_kinematics.py",
+      "revision": "0.4.2",
+      "sha256": "4d1561577ae91b9d279a6242addf313236a9ec9abec5cbf0f7e78fe45ce4a4bd",
+      "bytes": 12082
+    },
+    {
+      "destination": "sdk_python_excerpt/dexe_rp/trajectory/toppra_planner.py",
+      "source": "dexe_rp_installed_python",
+      "source_path": "dexe_rp/trajectory/toppra_planner.py",
+      "revision": "0.4.2",
+      "sha256": "51ae6e75c0c3a925b55e023b8c116a8c12d4633e26dee46f10753f82449cd454",
+      "bytes": 5085
+    },
+    {
+      "destination": "sdk_python_excerpt/dexe_rp/version.py",
+      "source": "dexe_rp_installed_python",
+      "source_path": "dexe_rp/version.py",
+      "revision": "0.4.2",
+      "sha256": "6ed124e2a9b6f39ffaac6f96bd3ad6e97e0678473e7d11d1f22ddb554e412067",
+      "bytes": 261
+    },
+    {
+      "destination": "sdk_python_excerpt/METADATA.upstream",
+      "source": "dexe_rp_installed_python",
+      "source_path": "dexe_rp-0.4.2.dist-info/METADATA",
+      "revision": "0.4.2",
+      "sha256": "5935fbc60ad7458862afff1603b498698be46a31187624b425bcf05ca2721f42",
+      "bytes": 485
+    }
+  ]
+}

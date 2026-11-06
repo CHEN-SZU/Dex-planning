@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "python_version": "3.10.12",
+  "checks": {
+    "source_files": 280,
+    "python_files": 80,
+    "xml_files": 8,
+    "markdown_links": 30,
+    "scanned_files": 289
+  },
+  "algorithm_tests_run": false,
+  "cpp_build_run": false,
+  "robot_connections_used": false,
+  "errors": []
+}

@@ -1,0 +1,16 @@
+Metadata-Version: 2.4
+Name: dexe_rp
+Version: 0.4.2
+Summary: DexForce Embodied Robot Planning SDK
+Author-email: Dexforce <dexforce@dexforce.com>
+Requires-Python: >=3.10
+Requires-Dist: numpy<2,>=1.24.4
+Requires-Dist: toppra==0.6.3
+Requires-Dist: scipy<2,>=1.11.3
+Requires-Dist: Pyyaml
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: build; extra == "dev"
+Provides-Extra: vis
+Requires-Dist: viser; extra == "vis"
+Requires-Dist: loop_rate_limiters; extra == "vis"
